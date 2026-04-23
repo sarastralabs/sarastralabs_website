@@ -23,14 +23,14 @@ export default function Navbar() {
           <div
             className={`relative overflow-hidden rounded-full transition-all duration-500 ${
               scrolled
-                ? "bg-[#0A0A0A]/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-                : "bg-[#0A0A0A]/60 backdrop-blur-xl"
+                ? "bg-[#1A1410]/98 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+                : "bg-[#1A1410]/95 backdrop-blur-md"
             }`}
             style={{
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              border: "1px solid rgba(255, 92, 0, 0.15)",
               boxShadow: scrolled
-                ? "0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-                : "0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+                ? "0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 92, 0, 0.08)"
+                : "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 92, 0, 0.05)",
             }}
           >
           {/* Gradient Border Top */}
@@ -119,8 +119,8 @@ export default function Navbar() {
 
     {/* Mobile Menu - Outside navbar container */}
     <div
-      className={`md:hidden fixed left-4 right-4 transition-all duration-500 ease-out ${
-        isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-8'
+      className={`md:hidden fixed left-4 right-4 transition-all duration-300 ease-out ${
+        isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'
       }`}
       style={{
         top: '100px',
@@ -128,11 +128,8 @@ export default function Navbar() {
         zIndex: 9999,
       }}
     >
-      {/* Backdrop blur overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/98 via-[#0A0A0A]/95 to-[#0A0A0A]/98 backdrop-blur-3xl rounded-3xl border-2 border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.8)]" />
-      
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#FF5C00]/20 via-[#FF7A2B]/20 to-[#FF5C00]/20 opacity-50 blur-xl" />
+      {/* Backdrop overlay with blur */}
+      <div className="absolute inset-0 bg-[#2B1F1A]/95 backdrop-blur-xl rounded-3xl border-2 border-[#FF5C00]/20 shadow-2xl" />
       
       <div className="relative p-8 flex flex-col gap-4">
         {/* Menu items */}
@@ -146,15 +143,9 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="group/mobile relative px-6 py-5 text-lg text-white bg-gradient-to-r from-white/5 to-white/[0.02] hover:from-white/10 hover:to-white/5 rounded-2xl transition-all duration-300 border border-white/10 hover:border-[#FF5C00]/50 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FF5C00]/20"
+              className="group/mobile relative px-6 py-5 text-lg text-white bg-[#3D2D24]/80 hover:bg-[#3D2D24]/90 rounded-2xl transition-colors duration-200 border border-[#FF5C00]/20 hover:border-[#FF5C00]/50"
               onClick={() => setIsOpen(false)}
-              style={{
-                animationDelay: `${index * 100}ms`,
-                animation: isOpen ? 'slide-in-left 0.4s ease-out forwards' : 'none',
-              }}
             >
-              {/* Hover gradient effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FF5C00]/0 via-[#FF5C00]/5 to-[#FF5C00]/0 opacity-0 group-hover/mobile:opacity-100 transition-opacity duration-300 rounded-2xl" />
               
               <span className="relative flex items-center justify-between">
                 <span className="flex items-center gap-3">
@@ -176,18 +167,9 @@ export default function Navbar() {
         {/* Contact button */}
         <a
           href="#contact"
-          className="relative group/cta px-8 py-6 bg-gradient-to-r from-[#FF5C00] via-[#FF6A15] to-[#FF7A2B] text-white font-[family-name:var(--font-syne)] font-bold text-xl text-center rounded-2xl transition-all duration-300 hover:scale-[1.03] shadow-[0_10px_40px_rgba(255,92,0,0.5),0_0_80px_rgba(255,92,0,0.3)] hover:shadow-[0_20px_60px_rgba(255,92,0,0.7),0_0_100px_rgba(255,92,0,0.5)] overflow-hidden"
+          className="relative group/cta px-8 py-6 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] text-white font-[family-name:var(--font-syne)] font-bold text-xl text-center rounded-2xl transition-all duration-200 hover:brightness-110 shadow-lg shadow-[#FF5C00]/30 overflow-hidden"
           onClick={() => setIsOpen(false)}
-          style={{
-            animationDelay: '300ms',
-            animation: isOpen ? 'slide-in-left 0.4s ease-out forwards' : 'none',
-          }}
         >
-          {/* Animated background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A2B] via-[#FF6A15] to-[#FF5C00] opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500" />
-          
-          {/* Animated shine effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover/cta:translate-x-[200%] transition-transform duration-1000 skew-x-12" />
           
           <span className="relative flex items-center justify-center gap-3">
             <span className="text-shadow-lg">Contact Us</span>

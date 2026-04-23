@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import MeshGradient from "@/components/MeshGradient";
 import DynamicGrid from "@/components/DynamicGrid";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
 
         <div className="relative z-10">
           <Navbar />
+          <ScrollIndicator />
           <Hero />
           <section id="about" aria-label="About Sarastra Labs">
             <About />

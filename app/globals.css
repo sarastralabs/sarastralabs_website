@@ -1,26 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-orange: #FF5C00;
-  --color-orange-light: #FF7A2B;
-  --color-orange-pale: #FFF0E8;
-  --color-orange-dark: #CC4900;
-  
-  --color-black: #0A0A0A;
-  --color-black-900: #111111;
-  --color-black-800: #1A1A1A;
-  --color-black-700: #2A2A2A;
-  --color-black-600: #3D3D3D;
-  
-  --color-gray-400: #888888;
-  --color-gray-200: #D4D4D4;
-  --color-gray-100: #F0F0F0;
-  --color-gray-600: #3D3D3D;
-  
-  --font-family-display: var(--font-syne), sans-serif;
-  --font-family-body: var(--font-space-grotesk), sans-serif;
-  --font-family-mono: var(--font-jetbrains-mono), monospace;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background-color: #0A0A0A;
