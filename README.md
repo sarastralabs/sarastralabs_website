@@ -1,91 +1,74 @@
-# Sarastra Labs Website
+# Sarastra Labs
 
-A production-level, futuristic Next.js website built according to the Sarastra Labs brand book specifications.
+**Software · AI · Digital · Education**
 
-## ✨ Features
+---
 
-### 🎨 Design
-- **Futuristic Dark Theme** with animated gradients and glowing effects
-- **Glassmorphism UI** with frosted glass effects throughout
-- **Lucide Icons** - Modern, clean icon system replacing emojis
-- **Particle Network Animation** - Interactive canvas with connected particles
-- **3D Card Transforms** - Perspective hover effects on interactive elements
-- **Scroll Animations** - Elements fade and slide in as you scroll
+## About Us
 
-### 📱 Fully Responsive
-- Mobile-first design (320px+)
-- Tablet optimized (641px - 1024px)
-- Desktop enhanced (1025px+)
-- Touch-friendly interactions
+**Sarastra Labs** is a technology-first venture built for the builders of tomorrow. We deliver software services, AI agents, digital marketing, and project support — all under one roof.
 
-### 🚀 Sections
+The name *Sarastra* draws from depth and direction — like a thousand threads woven into one powerful system. We are that system: versatile, adaptive, and always evolving.
 
-1. **Hero** - Animated particle network, stats, rotating rings, gradient orbs
-2. **About** - Mission, vision, core values, tech stack showcase
-3. **Services** - 6 service offerings with interactive cards and icons
-4. **CTA Banner** - Eye-catching conversion section with benefits
-5. **Blog/Insights** - Latest articles with trending badges
-6. **Industries** - 6 industry sectors with project counts
-7. **Partners/Clients** - Stats, partner logos, testimonials
-8. **Contact** - Full contact form with social links
-9. **Footer** - Comprehensive footer with links and social media
+### Mission
+Empower businesses and students with technology that works — fast, smart, and future-ready.
 
-### 🎯 Brand Identity
+### Vision
+To be the innovation engine for the next generation of Indian tech ventures.
 
-- **Primary Color**: Ignition Orange (#FF5C00)
-- **Typography**: 
-  - Display: Syne (Headlines, Logo)
-  - Body: Space Grotesk (Content)
-  - Mono: JetBrains Mono (Labels, Code)
+---
 
-### ⚡ Performance Features
+## What We Build
 
-- Next.js 16 with App Router
-- TypeScript for type safety
-- Tailwind CSS v4 for styling
-- Optimized animations with CSS keyframes
-- Lazy loading and intersection observers
-- SEO optimized with metadata
+### 01 — Software Services
+Custom web & mobile apps, APIs, SaaS products, and end-to-end development.
 
-## 🛠️ Getting Started
+### 02 — Digital Marketing
+SEO, social, paid ads, brand strategy — data-driven growth for every business.
 
-1. Install dependencies:
-```bash
-cd sarastra-labs
-npm install
-```
+### 03 — Website Design
+High-converting landing pages, portfolio sites, and e-commerce storefronts.
 
-2. Run the development server:
-```bash
-npm run dev
-```
+### 04 — AI Agents
+Custom AI automation — chatbots, workflows, and intelligent systems for your business.
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+### 05 — NexGen Projects
+Industry-grade student & early-career projects — real problems, real solutions, real portfolio.
 
-## 📦 Build for Production
+### 06 — Labs Launchpad
+Internships & open-source programs — the bridge from classroom to the real tech world.
 
-```bash
-npm run build
-npm start
-```
+---
 
-## 🎨 Customization
+## Brand Identity
 
-All colors, fonts, and animations are defined in:
-- `app/globals.css` - Custom animations and theme variables
-- `tailwind.config.ts` - Tailwind configuration
-- Component files - Individual section styling
+### Colors
+- **Ignition Orange** (#FF5C00) - Primary, CTA, Accent
+- **Deep Space** (#0A0A0A) - Text, Backgrounds, UI
+- **Signal White** (#FFFFFF) - Backgrounds, Contrast
 
-## 🚀 Deployment
+### Typography
+- **Syne** - Headlines, Logo, Display
+- **Space Grotesk** - Body, UI, Subheadings
+- **JetBrains Mono** - Code, Labels, Stats, Tags
 
-Deploy easily on Vercel:
+### Brand Voice
+We speak with confidence, not arrogance. We're future-forward, student-first, and never corporate-speak. We don't just build software — we build momentum.
 
-```bash
-vercel
-```
+---
 
-Or any other Next.js-compatible hosting platform.
+## Contact
 
-## 📄 License
+- **Email**: info@sarastralabs.com
+- **Phone**: +91-9353622801, +91-9741447767
+- **Location**: India
+
+### Follow Us
+- [LinkedIn](https://www.linkedin.com/company/sarastralabs)
+- [X (Twitter)](https://x.com/LabsSarastra)
+- [Instagram](https://www.instagram.com/sarastralabs)
+- [YouTube](https://www.youtube.com/@sarastralabs)
+
+---
 
 © 2025 Sarastra Labs. All rights reserved.
