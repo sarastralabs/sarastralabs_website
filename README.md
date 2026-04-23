@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sarastra Labs Website
 
-## Getting Started
+A production-level, futuristic Next.js website built according to the Sarastra Labs brand book specifications.
 
-First, run the development server:
+## ✨ Features
 
+### 🎨 Design
+- **Futuristic Dark Theme** with animated gradients and glowing effects
+- **Glassmorphism UI** with frosted glass effects throughout
+- **Lucide Icons** - Modern, clean icon system replacing emojis
+- **Particle Network Animation** - Interactive canvas with connected particles
+- **3D Card Transforms** - Perspective hover effects on interactive elements
+- **Scroll Animations** - Elements fade and slide in as you scroll
+
+### 📱 Fully Responsive
+- Mobile-first design (320px+)
+- Tablet optimized (641px - 1024px)
+- Desktop enhanced (1025px+)
+- Touch-friendly interactions
+
+### 🚀 Sections
+
+1. **Hero** - Animated particle network, stats, rotating rings, gradient orbs
+2. **About** - Mission, vision, core values, tech stack showcase
+3. **Services** - 6 service offerings with interactive cards and icons
+4. **CTA Banner** - Eye-catching conversion section with benefits
+5. **Blog/Insights** - Latest articles with trending badges
+6. **Industries** - 6 industry sectors with project counts
+7. **Partners/Clients** - Stats, partner logos, testimonials
+8. **Contact** - Full contact form with social links
+9. **Footer** - Comprehensive footer with links and social media
+
+### 🎯 Brand Identity
+
+- **Primary Color**: Ignition Orange (#FF5C00)
+- **Typography**: 
+  - Display: Syne (Headlines, Logo)
+  - Body: Space Grotesk (Content)
+  - Mono: JetBrains Mono (Labels, Code)
+
+### ⚡ Performance Features
+
+- Next.js 16 with App Router
+- TypeScript for type safety
+- Tailwind CSS v4 for styling
+- Optimized animations with CSS keyframes
+- Lazy loading and intersection observers
+- SEO optimized with metadata
+
+## 🛠️ Getting Started
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd sarastra-labs
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Build for Production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All colors, fonts, and animations are defined in:
+- `app/globals.css` - Custom animations and theme variables
+- `tailwind.config.ts` - Tailwind configuration
+- Component files - Individual section styling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
 
-## Deploy on Vercel
+Deploy easily on Vercel:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Or any other Next.js-compatible hosting platform.
+
+## 📄 License
+
+© 2025 Sarastra Labs. All rights reserved.
