@@ -43,7 +43,7 @@ export default function About() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          {/* Left Column - Story */}
+          {/* Left Column - Story & Core Values */}
           <div className={`space-y-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="glass-effect p-6 sm:p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
               <p className="text-base sm:text-lg leading-relaxed text-white/80 mb-4 sm:mb-6 group-hover:text-white transition-colors">
@@ -57,140 +57,42 @@ export default function About() {
               </p>
             </div>
 
-            {/* Tech Stack Showcase */}
+            {/* Core Values Card */}
             <div className="glass-effect p-6 sm:p-8 rounded-2xl overflow-hidden">
-              <h3 className="font-[family-name:var(--font-syne)] text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">
-                Our Tech Stack
+              <h3 className="font-[family-name:var(--font-syne)] text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3">
+                <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF5C00]" strokeWidth={1.5} />
+                Core Values
               </h3>
-              
-              {/* Frontend */}
-              <div className="mb-4">
-                <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#888888] uppercase tracking-wider mb-2">
-                  // Frontend
-                </div>
-                <div className="relative overflow-hidden scroll-fade-left scroll-fade-right">
-                  <div className="flex gap-2 sm:gap-3 animate-scroll-left hover:pause-animation">
-                    {[...Array(3)].map((_, setIndex) => (
-                      <div key={setIndex} className="flex gap-2 sm:gap-3 flex-shrink-0">
-                        {["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "Figma", "React Native"].map((tech, i) => (
-                          <span
+              <div className="relative h-[280px] overflow-hidden scroll-fade-top scroll-fade-bottom">
+                <div className="flex flex-col gap-3 sm:gap-4 animate-scroll-up hover:pause-animation">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex flex-col gap-3 sm:gap-4">
+                      {[
+                        { icon: Lightbulb, text: "Knowledge first", desc: "Rooted in Saraswathi — we prioritise learning, clarity, and depth in everything we ship." },
+                        { icon: Zap, text: "Precision & purpose", desc: "Rooted in Astra — we act with intent. Fast, deliberate, focused on what actually matters." },
+                        { icon: Award, text: "Affordable access", desc: "Great technology shouldn't be expensive. We price for builders and students, not just corporations." },
+                        { icon: Award, text: "End-to-end ownership", desc: "We don't hand off half-built things. From idea to deployment, we see every project through." },
+                        { icon: Users, text: "Student-centred growth", desc: "We invest in the next generation — mentoring, building, and launching with them, not just for them." },
+                        { icon: TrendingUp, text: "Always evolving", desc: "We stay current so our clients and students don't have to. Adaptive, curious, always moving forward." },
+                      ].map((value, i) => {
+                        const IconComponent = value.icon;
+                        return (
+                          <div
                             key={i}
-                            className={`px-3 sm:px-4 py-1.5 sm:py-2 ${
-                              i < 3 
-                                ? "bg-[#FF5C00]/20 border-[#FF5C00]/50" 
-                                : "bg-[#FF5C00]/10 border-[#FF5C00]/30"
-                            } border rounded-full text-[#FF5C00] text-xs sm:text-sm font-[family-name:var(--font-jetbrains-mono)] whitespace-nowrap cursor-default transition-all duration-300 hover:scale-105 hover:bg-[#FF5C00]/30`}
+                            className="group p-3 sm:p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-default border border-white/10 hover:border-[#FF5C00]/30 flex-shrink-0"
                           >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Backend */}
-              <div className="mb-4">
-                <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#888888] uppercase tracking-wider mb-2">
-                  // Backend
-                </div>
-                <div className="relative overflow-hidden scroll-fade-left scroll-fade-right">
-                  <div className="flex gap-2 sm:gap-3 animate-scroll-right hover:pause-animation">
-                    {[...Array(3)].map((_, setIndex) => (
-                      <div key={setIndex} className="flex gap-2 sm:gap-3 flex-shrink-0">
-                        {["Node.js", "Python", "FastAPI", "Django", "Express.js", "GraphQL", "REST APIs"].map((tech, i) => (
-                          <span
-                            key={i}
-                            className={`px-3 sm:px-4 py-1.5 sm:py-2 ${
-                              i < 2 
-                                ? "bg-[#FF5C00]/20 border-[#FF5C00]/50" 
-                                : "bg-[#FF5C00]/10 border-[#FF5C00]/30"
-                            } border rounded-full text-[#FF5C00] text-xs sm:text-sm font-[family-name:var(--font-jetbrains-mono)] whitespace-nowrap cursor-default transition-all duration-300 hover:scale-105 hover:bg-[#FF5C00]/30`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* AI/ML */}
-              <div className="mb-4">
-                <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#888888] uppercase tracking-wider mb-2">
-                  // AI / ML
-                </div>
-                <div className="relative overflow-hidden scroll-fade-left scroll-fade-right">
-                  <div className="flex gap-2 sm:gap-3 animate-scroll-left hover:pause-animation">
-                    {[...Array(3)].map((_, setIndex) => (
-                      <div key={setIndex} className="flex gap-2 sm:gap-3 flex-shrink-0">
-                        {["AI / ML", "LangChain", "OpenAI API", "HuggingFace", "RAG pipelines", "TensorFlow", "PyTorch", "LlamaIndex"].map((tech, i) => (
-                          <span
-                            key={i}
-                            className={`px-3 sm:px-4 py-1.5 sm:py-2 ${
-                              i === 0 
-                                ? "bg-[#FF5C00]/20 border-[#FF5C00]/50" 
-                                : "bg-[#FF5C00]/10 border-[#FF5C00]/30"
-                            } border rounded-full text-[#FF5C00] text-xs sm:text-sm font-[family-name:var(--font-jetbrains-mono)] whitespace-nowrap cursor-default transition-all duration-300 hover:scale-105 hover:bg-[#FF5C00]/30`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Cloud & DevOps */}
-              <div className="mb-4">
-                <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#888888] uppercase tracking-wider mb-2">
-                  // Cloud & DevOps
-                </div>
-                <div className="relative overflow-hidden scroll-fade-left scroll-fade-right">
-                  <div className="flex gap-2 sm:gap-3 animate-scroll-right hover:pause-animation">
-                    {[...Array(3)].map((_, setIndex) => (
-                      <div key={setIndex} className="flex gap-2 sm:gap-3 flex-shrink-0">
-                        {["AWS", "Google Cloud", "Azure", "Vercel", "Netlify", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Supabase", "Firebase"].map((tech, i) => (
-                          <span
-                            key={i}
-                            className={`px-3 sm:px-4 py-1.5 sm:py-2 ${
-                              i < 2 
-                                ? "bg-[#FF5C00]/20 border-[#FF5C00]/50" 
-                                : "bg-[#FF5C00]/10 border-[#FF5C00]/30"
-                            } border rounded-full text-[#FF5C00] text-xs sm:text-sm font-[family-name:var(--font-jetbrains-mono)] whitespace-nowrap cursor-default transition-all duration-300 hover:scale-105 hover:bg-[#FF5C00]/30`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Data & Databases */}
-              <div>
-                <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#888888] uppercase tracking-wider mb-2">
-                  // Data & Databases
-                </div>
-                <div className="relative overflow-hidden scroll-fade-left scroll-fade-right">
-                  <div className="flex gap-2 sm:gap-3 animate-scroll-left hover:pause-animation">
-                    {[...Array(3)].map((_, setIndex) => (
-                      <div key={setIndex} className="flex gap-2 sm:gap-3 flex-shrink-0">
-                        {["PostgreSQL", "MongoDB", "Redis", "MySQL", "Prisma", "Pinecone", "Elasticsearch"].map((tech, i) => (
-                          <span
-                            key={i}
-                            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#FF5C00]/10 border border-[#FF5C00]/30 rounded-full text-[#FF5C00] text-xs sm:text-sm font-[family-name:var(--font-jetbrains-mono)] whitespace-nowrap cursor-default transition-all duration-300 hover:scale-105 hover:bg-[#FF5C00]/30"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
+                            <div className="flex items-start gap-3 sm:gap-4">
+                              <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF5C00] flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                              <div>
+                                <span className="text-sm sm:text-base font-semibold text-white block mb-1">{value.text}</span>
+                                <span className="text-xs sm:text-sm text-white/60 group-hover:text-white/80 transition-colors">{value.desc}</span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -237,46 +139,6 @@ export default function About() {
                 <p className="text-sm sm:text-base text-white/80 leading-relaxed">
                   To become the most trusted technology partner for emerging Indian ventures and student builders — the studio that turns raw ideas into polished products and students into confident engineers.
                 </p>
-              </div>
-            </div>
-
-            {/* Values Card */}
-            <div className="glass-effect p-6 sm:p-8 rounded-2xl overflow-hidden">
-              <h3 className="font-[family-name:var(--font-syne)] text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3">
-                <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF5C00]" strokeWidth={1.5} />
-                Core Values
-              </h3>
-              <div className="relative h-[280px] overflow-hidden scroll-fade-top scroll-fade-bottom">
-                <div className="flex flex-col gap-3 sm:gap-4 animate-scroll-up hover:pause-animation">
-                  {[...Array(3)].map((_, setIndex) => (
-                    <div key={setIndex} className="flex flex-col gap-3 sm:gap-4">
-                      {[
-                        { icon: Lightbulb, text: "Knowledge first", desc: "Rooted in Saraswathi — we prioritise learning, clarity, and depth in everything we ship." },
-                        { icon: Zap, text: "Precision & purpose", desc: "Rooted in Astra — we act with intent. Fast, deliberate, focused on what actually matters." },
-                        { icon: Award, text: "Affordable access", desc: "Great technology shouldn't be expensive. We price for builders and students, not just corporations." },
-                        { icon: Award, text: "End-to-end ownership", desc: "We don't hand off half-built things. From idea to deployment, we see every project through." },
-                        { icon: Users, text: "Student-centred growth", desc: "We invest in the next generation — mentoring, building, and launching with them, not just for them." },
-                        { icon: TrendingUp, text: "Always evolving", desc: "We stay current so our clients and students don't have to. Adaptive, curious, always moving forward." },
-                      ].map((value, i) => {
-                        const IconComponent = value.icon;
-                        return (
-                          <div
-                            key={i}
-                            className="group p-3 sm:p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-default border border-white/10 hover:border-[#FF5C00]/30 flex-shrink-0"
-                          >
-                            <div className="flex items-start gap-3 sm:gap-4">
-                              <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF5C00] flex-shrink-0 mt-0.5" strokeWidth={1.5} />
-                              <div>
-                                <span className="text-sm sm:text-base font-semibold text-white block mb-1">{value.text}</span>
-                                <span className="text-xs sm:text-sm text-white/60 group-hover:text-white/80 transition-colors">{value.desc}</span>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

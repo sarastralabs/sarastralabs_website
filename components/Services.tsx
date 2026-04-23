@@ -110,6 +110,7 @@ const services = [
 
 export default function Services() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -157,21 +158,21 @@ export default function Services() {
               return (
                 <div
                   key={service.num}
-                  className={`group relative perspective-card glass-effect p-6 sm:p-8 rounded-2xl transition-all duration-700 ${
+                  className={`group relative glass-effect p-6 sm:p-8 rounded-2xl transition-all duration-700 hover:scale-[1.08] hover:-translate-y-2 cursor-pointer ${
                     isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
-                  } ${hoveredIndex === index ? 'z-50' : 'z-10'}`}
+                  } ${hoveredIndex === index ? 'z-50 ring-2 ring-[#FF5C00]/50' : 'z-10'}`}
                   style={{ 
                     transitionDelay: `${index * 150}ms`,
-                    transformStyle: 'preserve-3d'
                   }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => setSelectedIndex(index)}
                 >
                   {/* Gradient Border Effect */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl`} />
                   
                   {/* Animated Top Border */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500`} />
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 rounded-t-2xl`} />
                   
                   {/* Icon with Glow */}
                   <div className="relative mb-6">
@@ -221,74 +222,85 @@ export default function Services() {
             })}
           </div>
 
-          {/* Centered Popup - Outside the grid */}
+          {/* Modal Backdrop */}
+          {selectedIndex !== null && (
+            <div 
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[90] animate-fade-in"
+              onClick={() => setSelectedIndex(null)}
+            />
+          )}
+
+          {/* Centered Popup Modal */}
           <div 
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-150 ${
-              hoveredIndex !== null 
-                ? 'opacity-100 pointer-events-auto' 
-                : 'opacity-0 pointer-events-none'
+            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${
+              selectedIndex !== null 
+                ? 'opacity-100 pointer-events-auto scale-100' 
+                : 'opacity-0 pointer-events-none scale-90'
             }`}
             style={{ zIndex: 100 }}
-            onMouseEnter={() => hoveredIndex !== null && setHoveredIndex(hoveredIndex)}
-            onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="relative backdrop-blur-3xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border-2 border-[#FF5C00]/50 rounded-[32px] p-12 shadow-[0_30px_90px_rgba(255,92,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.1)] w-[650px] overflow-hidden">
+            <div className="relative backdrop-blur-3xl bg-gradient-to-br from-[#0A0A0A]/95 via-[#1A1A1A]/90 to-[#0A0A0A]/95 border-2 border-[#FF5C00]/60 rounded-3xl p-8 shadow-[0_40px_120px_rgba(255,92,0,0.8),0_0_80px_rgba(255,92,0,0.4),inset_0_1px_2px_rgba(255,255,255,0.15)] w-[90vw] max-w-[520px] animate-popup-in">
               {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FF5C00]/10 via-transparent to-[#FF7A2B]/10 opacity-50 animate-gradient" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF5C00]/15 via-transparent to-[#FF7A2B]/15 opacity-60 animate-gradient rounded-3xl" />
               
               {/* Glow effect */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#FF5C00]/30 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#FF7A2B]/20 rounded-full blur-3xl" />
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#FF5C00]/40 rounded-full blur-3xl animate-pulse-glow" />
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#FF7A2B]/30 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
               
-              {hoveredIndex !== null && (
+              {selectedIndex !== null && (
                 <div className="relative z-10">
-                  {/* Close hint */}
-                  <div className="absolute -top-6 right-0 text-[#888888] text-xs font-[family-name:var(--font-jetbrains-mono)] tracking-wider">
-                    ESC or hover out to close
-                  </div>
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setSelectedIndex(null)}
+                    className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br from-[#FF5C00] to-[#FF7A2B] text-white flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-[#FF5C00]/50 z-20 text-sm font-bold"
+                    aria-label="Close modal"
+                  >
+                    ✕
+                  </button>
                   
                   {/* Service Icon & Name */}
-                  <div className="flex items-center gap-6 mb-8 pb-6 border-b border-[#FF5C00]/30">
-                    <div className={`relative p-5 rounded-3xl bg-gradient-to-br ${services[hoveredIndex].gradient} shadow-lg`}>
+                  <div className="flex items-center gap-4 mb-6 pb-5 border-b border-[#FF5C00]/40">
+                    <div className={`relative p-3 rounded-2xl bg-gradient-to-br ${services[selectedIndex].gradient} shadow-[0_8px_30px_rgba(255,92,0,0.5)] animate-float`}>
                       {(() => {
-                        const IconComponent = services[hoveredIndex].icon;
-                        return <IconComponent className="w-12 h-12 text-white" strokeWidth={2} />;
+                        const IconComponent = services[selectedIndex].icon;
+                        return <IconComponent className="w-8 h-8 text-white" strokeWidth={2} />;
                       })()}
-                      <div className="absolute inset-0 rounded-3xl bg-white/20 blur-sm" />
+                      <div className="absolute inset-0 rounded-2xl bg-white/20 blur-sm animate-pulse-glow" />
                     </div>
                     <div className="flex-1">
-                      <div className="font-[family-name:var(--font-jetbrains-mono)] text-sm text-[#FF5C00] mb-2 tracking-widest">
-                        {services[hoveredIndex].num} — SERVICE
+                      <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-[#FF5C00] mb-1 tracking-widest">
+                        {services[selectedIndex].num} — SERVICE
                       </div>
-                      <h4 className="font-[family-name:var(--font-syne)] text-3xl font-bold text-white mb-2">
-                        {services[hoveredIndex].name}
+                      <h4 className="font-[family-name:var(--font-syne)] text-xl font-bold text-white mb-1">
+                        {services[selectedIndex].name}
                       </h4>
-                      <p className="text-sm text-[#AAAAAA] leading-relaxed">
-                        {services[hoveredIndex].desc}
+                      <p className="text-xs text-[#AAAAAA] leading-relaxed">
+                        {services[selectedIndex].desc}
                       </p>
                     </div>
                   </div>
                   
                   {/* What We Offer Header */}
-                  <div className="flex items-center gap-3 mb-6 px-4 py-3 bg-white/5 rounded-2xl border border-[#FF5C00]/20">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${services[hoveredIndex].gradient} animate-pulse-glow shadow-lg shadow-[#FF5C00]/50`} />
-                    <span className="font-[family-name:var(--font-syne)] text-lg font-bold text-white tracking-wide">
+                  <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-white/5 rounded-xl border border-[#FF5C00]/20">
+                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${services[selectedIndex].gradient} animate-pulse-glow shadow-lg shadow-[#FF5C00]/50`} />
+                    <span className="font-[family-name:var(--font-syne)] text-sm font-bold text-white tracking-wide">
                       What We Offer
                     </span>
-                    <div className="flex-1 h-px bg-gradient-to-r from-[#FF5C00]/30 to-transparent ml-4" />
+                    <div className="flex-1 h-px bg-gradient-to-r from-[#FF5C00]/30 to-transparent ml-2" />
                   </div>
                   
                   {/* Sub-Services Grid */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {services[hoveredIndex].subServices.map((subService, subIndex) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {services[selectedIndex].subServices.map((subService, subIndex) => (
                       <div 
                         key={subIndex}
-                        className="group/item flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF5C00]/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                        className="group/item flex items-start gap-2 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#FF5C00]/50 hover:bg-white/10 hover:scale-105 transition-all duration-300"
+                        style={{ animationDelay: `${subIndex * 50}ms` }}
                       >
-                        <div className="flex-shrink-0 w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF5C00]/20 to-[#FF7A2B]/20 flex items-center justify-center border border-[#FF5C00]/30 group-hover/item:scale-110 group-hover/item:rotate-12 transition-all duration-300">
-                          <span className="text-[#FF5C00] text-sm font-bold">✓</span>
+                        <div className="flex-shrink-0 w-5 h-5 rounded-lg bg-gradient-to-br from-[#FF5C00]/20 to-[#FF7A2B]/20 flex items-center justify-center border border-[#FF5C00]/30 group-hover/item:scale-110 group-hover/item:rotate-12 transition-all duration-300">
+                          <span className="text-[#FF5C00] text-xs font-bold">✓</span>
                         </div>
-                        <span className="flex-1 text-sm text-[#CCCCCC] group-hover/item:text-white transition-colors duration-300 leading-relaxed">
+                        <span className="flex-1 text-xs text-[#CCCCCC] group-hover/item:text-white transition-colors duration-300 leading-relaxed">
                           {subService}
                         </span>
                       </div>
@@ -296,10 +308,10 @@ export default function Services() {
                   </div>
                   
                   {/* Status Badge */}
-                  <div className="mt-6 flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-[#FF5C00]/20 to-[#FF7A2B]/20 rounded-full border border-[#FF5C00]/40">
-                    <span className={`w-2 h-2 rounded-full ${services[hoveredIndex].active ? 'bg-[#FF5C00] animate-pulse-glow' : 'bg-[#888888]'}`} />
-                    <span className="font-[family-name:var(--font-jetbrains-mono)] text-xs text-white tracking-widest uppercase">
-                      {services[hoveredIndex].status}
+                  <div className="mt-5 flex items-center justify-center gap-2 py-2 px-5 bg-gradient-to-r from-[#FF5C00]/20 to-[#FF7A2B]/20 rounded-full border border-[#FF5C00]/40">
+                    <span className={`w-1.5 h-1.5 rounded-full ${services[selectedIndex].active ? 'bg-[#FF5C00] animate-pulse-glow' : 'bg-[#888888]'}`} />
+                    <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] text-white tracking-widest uppercase">
+                      {services[selectedIndex].status}
                     </span>
                   </div>
                 </div>

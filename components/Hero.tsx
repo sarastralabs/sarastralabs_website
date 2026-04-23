@@ -169,11 +169,18 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator - Mouse Shape */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <button 
+        onClick={() => {
+          const aboutSection = document.getElementById('about');
+          aboutSection?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
+        aria-label="Scroll to next section"
+      >
         <div className="relative w-8 h-14 border-3 border-[#FF5C00] rounded-full flex justify-center items-start pt-2 shadow-[0_0_30px_rgba(255,92,0,0.8)]">
           <div className="w-1.5 h-4 bg-[#FF5C00] rounded-full shadow-[0_0_15px_rgba(255,92,0,0.9)] animate-pulse-glow" />
         </div>
-      </div>
+      </button>
     </section>
   );
 }

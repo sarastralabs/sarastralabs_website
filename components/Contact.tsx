@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Mail, Phone, MapPin, Send, Link, MessageCircle, Code2, Camera, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Link, MessageCircle, Camera, Clock } from "lucide-react";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -145,7 +145,7 @@ export default function Contact() {
               </h4>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {[
-                  { name: "LinkedIn", icon: Link, url: "https://www.linkedin.com/company/sarastralabs" },
+                  { name: "LinkedIn", icon: Link, url: "https://www.linkedin.com/in/sarastra-labs-bb3595405/" },
                   { name: "X (Twitter)", icon: MessageCircle, url: "https://x.com/LabsSarastra" },
                   { name: "YouTube", icon: Camera, url: "https://www.youtube.com/@sarastralabs" },
                   { name: "Instagram", icon: Camera, url: "https://www.instagram.com/sarastralabs" },

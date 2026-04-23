@@ -114,7 +114,7 @@ export default function RootLayout({
       "addressRegion": "India"
     },
     "sameAs": [
-      "https://www.linkedin.com/company/sarastralabs",
+      "https://www.linkedin.com/in/sarastra-labs-bb3595405/",
       "https://x.com/LabsSarastra",
       "https://www.instagram.com/sarastralabs",
       "https://www.youtube.com/@sarastralabs"

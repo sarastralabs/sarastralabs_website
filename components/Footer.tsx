@@ -21,16 +21,18 @@ export default function Footer() {
 
           <div className="flex gap-4">
             {[
-              { icon: Link, href: "#" },
-              { icon: MessageCircle, href: "#" },
-              { icon: Code2, href: "#" },
-              { icon: Camera, href: "#" },
+              { icon: Link, href: "https://www.linkedin.com/in/sarastra-labs-bb3595405/" },
+              { icon: MessageCircle, href: "https://x.com/LabsSarastra" },
+              { icon: Camera, href: "https://www.youtube.com/@sarastralabs" },
+              { icon: Code2, href: "https://www.instagram.com/sarastralabs" },
             ].map((social, i) => {
               const IconComponent = social.icon;
               return (
                 <a
                   key={i}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 hover:scale-110 transition-all duration-300"
                 >
                   <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={1.5} />
