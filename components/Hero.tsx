@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Check, Briefcase, Users } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import HeroArt from "./HeroArt";
 
 export default function Hero() {
   return (
@@ -62,57 +63,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        {/* Team photo collage */}
-        <div className="relative mx-auto w-full max-w-md pb-10 sm:max-w-lg lg:max-w-none lg:pb-0">
-          <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,43,0.28),rgba(255,190,150,0.10)_60%,transparent)] blur-2xl" />
-
-          <div className="relative ml-auto w-[88%] overflow-hidden rounded-[2rem] shadow-lift">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1100&h=1300&fit=crop&q=80"
-              alt="A team planning a client project"
-              width={1100}
-              height={1300}
-              className="aspect-[11/13] w-full object-cover"
-            />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
-          </div>
-
-          {/* Inset photo */}
-          <div className="absolute bottom-0 left-0 w-[46%] overflow-hidden rounded-3xl border-[6px] border-cream shadow-lift lg:-bottom-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=460&fit=crop&q=80"
-              alt="Developers building software"
-              width={600}
-              height={460}
-              className="aspect-[30/23] w-full object-cover"
-            />
-          </div>
-
-          {/* Projects stat */}
-          <div className="absolute left-0 top-8 flex items-center gap-3 rounded-2xl border border-white bg-white/95 p-3.5 pr-5 shadow-lift backdrop-blur sm:top-12">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange text-white">
-              <Briefcase className="h-5 w-5" strokeWidth={1.75} />
-            </span>
-            <span>
-              <span className="block font-display text-xl font-semibold leading-none text-ink">50+</span>
-              <span className="mt-1 block text-xs text-muted">Projects delivered</span>
-            </span>
-          </div>
-
-          {/* Success stat */}
-          <div className="absolute bottom-24 right-4 rounded-2xl bg-ink p-4 text-white shadow-lift sm:bottom-28 sm:right-6 sm:p-5">
-            <p className="font-display text-3xl font-semibold leading-none">
-              99<span className="text-orange-light">%</span>
-            </p>
-            <p className="mt-1.5 text-xs text-white/65">Client success rate</p>
-            <div className="mt-3 flex items-center gap-1.5 text-[11px] text-white/80">
-              <Users className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
-              30+ clients
-            </div>
-          </div>
-        </div>
+        <HeroArt />
       </div>
     </section>
   );
