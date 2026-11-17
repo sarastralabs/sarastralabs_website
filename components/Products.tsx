@@ -18,7 +18,7 @@ export default function Products() {
     <section ref={ref} className="section-pad relative">
       <div className="container-page">
         <div className="relative overflow-hidden rounded-[2rem] border border-line/80 bg-gradient-to-br from-white via-white to-orange-pale px-6 py-12 shadow-soft sm:px-10 sm:py-14 lg:px-14">
-          <div aria-hidden="true" className="orb absolute -right-14 -top-14 h-44 w-44 opacity-80 sm:h-56 sm:w-56" />
+          <div aria-hidden="true" className="orb absolute -right-16 -top-16 h-32 w-32 opacity-70 sm:h-44 sm:w-44 lg:h-56 lg:w-56 lg:opacity-80" />
 
           <div className={`relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between reveal ${visible ? "is-visible" : ""}`}>
             <div className="max-w-2xl">
@@ -42,7 +42,7 @@ export default function Products() {
             </Link>
           </div>
 
-          <div className="relative mt-12 grid gap-5 md:grid-cols-3">
+          <div className="relative mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product, i) => {
               const revealed = Boolean(product.name);
               return (

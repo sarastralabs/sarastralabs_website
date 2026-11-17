@@ -7,7 +7,7 @@ export default function CTABanner() {
     <section className="py-12 sm:py-16">
       <div className="container-page">
         <div className="relative overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-white sm:px-12 sm:py-16 lg:px-16">
-          <div aria-hidden="true" className="orb absolute -right-16 -top-16 h-56 w-56 opacity-90 sm:h-72 sm:w-72" />
+          <div aria-hidden="true" className="orb absolute -right-20 -top-20 h-36 w-36 opacity-60 sm:h-48 sm:w-48 lg:-right-16 lg:-top-16 lg:h-72 lg:w-72 lg:opacity-90" />
           <div aria-hidden="true" className="absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-[radial-gradient(closest-side,rgba(255,92,0,0.35),transparent)] blur-2xl" />
 
           <div className="relative max-w-2xl">

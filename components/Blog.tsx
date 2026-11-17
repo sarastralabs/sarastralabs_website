@@ -59,7 +59,7 @@ function InstagramFeed({ posts }: { posts: InstagramPost[] }) {
             <h2 className="section-title mt-4">Latest insights.</h2>
             <p className="section-lead">Fresh from our Instagram: tips, launches and behind-the-scenes from the team.</p>
           </div>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-outline self-start md:self-auto">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-outline shrink-0 self-start whitespace-nowrap md:self-auto">
             <InstagramIcon className="h-4 w-4" />
             Follow @sarastra.labs
           </a>
@@ -99,7 +99,7 @@ function InstagramFeed({ posts }: { posts: InstagramPost[] }) {
                 {post.caption && (
                   <p className="line-clamp-3 flex-1 whitespace-pre-line text-[15px] leading-relaxed text-ink-soft">{post.caption}</p>
                 )}
-                <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-xs text-muted">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line pt-4 text-xs text-muted">
                   <span className="inline-flex items-center gap-1.5">
                     <Calendar className="h-3.5 w-3.5" strokeWidth={1.75} />
                     {formatDate(post.timestamp)}
@@ -131,7 +131,7 @@ function StaticInsights() {
             <h2 className="section-title mt-4">Latest insights.</h2>
             <p className="section-lead">Stay updated with the latest trends, tips, and insights from our team.</p>
           </div>
-          <a href="/blog" className="btn-outline self-start md:self-auto">
+          <a href="/blog" className="btn-outline shrink-0 self-start whitespace-nowrap md:self-auto">
             View All Posts
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
           </a>
@@ -166,8 +166,8 @@ function StaticInsights() {
                 </h3>
                 <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-muted">{post.excerpt}</p>
 
-                <div className="mt-6 flex items-center justify-between border-t border-line pt-5 text-xs text-muted">
-                  <div className="flex items-center gap-4">
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-t border-line pt-5 text-xs text-muted">
+                  <div className="flex items-center gap-4 whitespace-nowrap">
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar className="h-3.5 w-3.5" strokeWidth={1.75} />
                       {post.date}
@@ -177,7 +177,7 @@ function StaticInsights() {
                       {post.readTime}
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors group-hover:text-orange">
+                  <span className="inline-flex items-center gap-1 whitespace-nowrap text-sm font-semibold text-ink transition-colors group-hover:text-orange">
                     Read More
                     <ArrowRight className="h-4 w-4" strokeWidth={2} />
                   </span>

@@ -196,7 +196,7 @@ export default function Services() {
               From concept to deployment, we deliver cutting-edge solutions that drive real results.
             </p>
           </div>
-          <Link href="/contact" className="btn-ghost group self-start md:self-auto">
+          <Link href="/contact" className="btn-ghost group shrink-0 self-start whitespace-nowrap md:self-auto">
             Let&apos;s Build Together
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
           </Link>

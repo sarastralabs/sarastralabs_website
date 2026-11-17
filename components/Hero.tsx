@@ -7,8 +7,8 @@ export default function Hero() {
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-12 pt-28 sm:pb-16 sm:pt-32 md:pt-36 lg:pb-16 lg:pt-32">
       <HeroArt />
 
-      <div className="relative mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12">
-        <div className="min-w-0 lg:max-w-[704px] lg:pl-10 xl:pl-16">
+      <div className="container-page relative">
+        <div className="min-w-0 lg:max-w-[640px]">
           <Link
             href="/#products"
             className="group inline-flex max-w-full items-center gap-2.5 rounded-full border border-orange/20 bg-white/80 py-1 pl-1 pr-3.5 text-xs font-semibold text-ink-soft shadow-soft backdrop-blur transition-colors hover:border-orange/50 animate-fade-up sm:text-[13px]"
