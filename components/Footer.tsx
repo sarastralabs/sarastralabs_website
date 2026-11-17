@@ -7,6 +7,7 @@ const columns = [
     title: "Services",
     items: [
       { label: "Software Dev", href: "/services" },
+      { label: "Custom Software", href: "/services" },
       { label: "AI Agents", href: "/services" },
       { label: "Digital Marketing", href: "/services" },
       { label: "Web Design", href: "/services" },

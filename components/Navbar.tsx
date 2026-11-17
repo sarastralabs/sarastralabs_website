@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, ChevronDown, Mail, Phone, MapPin, Code2, TrendingUp, Palette, Bot, Rocket, GraduationCap } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Mail, Phone, MapPin, Code2, LayoutDashboard, TrendingUp, Palette, Bot, Rocket, GraduationCap } from "lucide-react";
 import { socialLinks } from "./SocialIcons";
 
 const serviceMenu = [
   { icon: Code2, name: "Software Services", desc: "Web & mobile apps, APIs, SaaS" },
+  { icon: LayoutDashboard, name: "Custom Business Software", desc: "Billing, inventory, CRM, bookings" },
   { icon: Palette, name: "Website Design", desc: "Landing pages, e-commerce, UI/UX" },
   { icon: TrendingUp, name: "Digital Marketing", desc: "SEO, social media, paid ads" },
   { icon: Bot, name: "AI Agents", desc: "Chatbots, workflows, automation" },
@@ -117,7 +118,7 @@ export default function Navbar() {
                       })}
                       <Link
                         href="/services"
-                        className="col-span-2 mt-1 flex items-center justify-between rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-ink transition-colors hover:text-orange"
+                        className="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-ink transition-colors hover:text-orange"
                       >
                         View all services
                         <ArrowRight className="h-4 w-4" strokeWidth={2} />

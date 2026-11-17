@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Code2, TrendingUp, Palette, Bot, Rocket, GraduationCap, ArrowRight, Check } from "lucide-react";
+import { Code2, LayoutDashboard, TrendingUp, Palette, Bot, Rocket, GraduationCap, ArrowRight, Check } from "lucide-react";
 import { useReveal } from "./useReveal";
 
 const services = [
@@ -24,6 +24,22 @@ const services = [
   },
   {
     num: "02",
+    name: "Custom Business Software",
+    desc: "Software built around how your business runs — billing, inventory, CRM, bookings and dashboards.",
+    status: "Live",
+    active: true,
+    icon: LayoutDashboard,
+    subServices: [
+      "Billing, Invoicing & POS",
+      "Inventory & Stock Management",
+      "CRM & Customer Management",
+      "Appointment & Booking Systems",
+      "ERP & Business Dashboards",
+      "HR, Payroll & Attendance"
+    ]
+  },
+  {
+    num: "03",
     name: "Digital Marketing",
     desc: "SEO, social, paid ads, brand strategy — data-driven growth for every business.",
     status: "Live",
@@ -39,7 +55,7 @@ const services = [
     ]
   },
   {
-    num: "03",
+    num: "04",
     name: "Website Design",
     desc: "High-converting landing pages, portfolio sites, and e-commerce storefronts.",
     status: "Live",
@@ -55,7 +71,7 @@ const services = [
     ]
   },
   {
-    num: "04",
+    num: "05",
     name: "AI Agents",
     desc: "Custom AI automation — chatbots, workflows, and intelligent systems for your business.",
     status: "Live",
@@ -71,7 +87,7 @@ const services = [
     ]
   },
   {
-    num: "05",
+    num: "06",
     name: "NexGen Projects",
     desc: "Industry-grade student & early-career projects — real problems, real solutions, real portfolio.",
     status: "Live",
@@ -87,7 +103,7 @@ const services = [
     ]
   },
   {
-    num: "06",
+    num: "07",
     name: "Labs Launchpad",
     desc: "Internships & open-source programs — the bridge from classroom to the real tech world.",
     status: "Coming Soon",

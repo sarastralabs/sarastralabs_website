@@ -1,7 +1,7 @@
 const stats = [
   { value: "50+", label: "Projects delivered" },
   { value: "30+", label: "Clients served" },
-  { value: "6", label: "Service lines" },
+  { value: "7", label: "Service lines" },
   { value: "99%", label: "Success rate" },
 ];
 
