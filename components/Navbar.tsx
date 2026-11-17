@@ -42,7 +42,7 @@ export default function Navbar() {
           scrolled ? "max-h-0" : "max-h-10"
         }`}
       >
-        <div className="container-page flex h-10 items-center justify-between text-[13px]">
+        <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex h-10 items-center justify-between text-[13px]">
           <div className="flex items-center gap-6">
             <a href="mailto:info@sarastralabs.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
               <Mail className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
@@ -81,19 +81,19 @@ export default function Navbar() {
               : "border-line/50 bg-cream/70 backdrop-blur-md"
         }`}
       >
-        <nav className="container-page flex h-16 items-center justify-between md:h-[72px]" aria-label="Main">
-          <Link href="/" className="flex shrink-0 items-center" aria-label="Sarastra Labs home">
+        <nav className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex h-16 items-center justify-between md:h-[76px] gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-8" aria-label="Main">
+          <Link href="/" className="flex shrink-0 items-center justify-self-start" aria-label="Sarastra Labs home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/logo-signature.png" alt="Sarastra Labs" width={615} height={96} className="h-7 w-auto md:h-8" />
+            <img src="/brand/logo-signature.png" alt="Sarastra Labs" width={615} height={96} className="h-7 w-auto max-w-none shrink-0 md:h-8" />
           </Link>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-0 lg:flex xl:gap-3 2xl:gap-5">
             {links.map((link) =>
               link.menu ? (
                 <div key={link.href} className="group relative">
                   <Link
                     href={link.href}
-                    className="inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[15px] xl:px-4 font-medium text-ink-soft transition-colors hover:text-orange"
+                    className="inline-flex items-center gap-1 rounded-full px-2 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 xl:px-3"
                   >
                     {link.label}
                     <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" strokeWidth={2} />
@@ -129,7 +129,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-orange xl:px-4"
+                  className="inline-flex items-center gap-1.5 rounded-full px-2 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 xl:px-3"
                 >
                   {link.label}
                   {link.soon && (
@@ -142,7 +142,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden justify-self-end lg:block">
             <Link href="/contact" className="btn-primary whitespace-nowrap px-5 py-2.5">
               <span className="xl:hidden">Free Consultation</span>
               <span className="hidden xl:inline">Get a Free Consultation</span>
@@ -166,7 +166,7 @@ export default function Navbar() {
             isOpen ? "max-h-[calc(100vh-64px)] opacity-100" : "pointer-events-none max-h-0 opacity-0"
           }`}
         >
-          <div className="container-page flex flex-col gap-1 pb-6 pt-2">
+          <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex flex-col gap-1 pb-6 pt-2">
             {links.map((link) => (
               <Link
                 key={link.href}
