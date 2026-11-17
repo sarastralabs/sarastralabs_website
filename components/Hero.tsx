@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeroArt, { HeroArtMobile } from "./HeroArt";
 
 export default function Hero() {
@@ -47,20 +47,6 @@ export default function Hero() {
               Explore Services
             </Link>
           </div>
-
-          <ul
-            className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-ink-soft animate-fade-up"
-            style={{ animationDelay: "320ms" }}
-          >
-            {["Free consultation", "End-to-end delivery", "24/7 support"].map((t) => (
-              <li key={t} className="inline-flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-pale">
-                  <Check className="h-3 w-3 text-orange" strokeWidth={3} />
-                </span>
-                {t}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <HeroArtMobile />
