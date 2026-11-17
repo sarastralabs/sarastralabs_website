@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react";
+import { useReveal } from "./useReveal";
 
 const blogPosts = [
   {
@@ -34,121 +34,70 @@ const blogPosts = [
 ];
 
 export default function Blog() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useReveal<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-b from-[#111111] to-[#0A0A0A] px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#FF5C00]/10 rounded-full blur-3xl animate-float" />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] sm:text-xs tracking-[0.2em] text-[#FF5C00] uppercase mb-3 sm:mb-4">
-            04 — Insights
+    <section ref={ref} className="section-pad relative">
+      <div className="container-page">
+        <div className={`flex flex-col gap-6 md:flex-row md:items-end md:justify-between reveal ${visible ? "is-visible" : ""}`}>
+          <div>
+            <p className="eyebrow">Insights</p>
+            <h2 className="section-title mt-4">Latest insights.</h2>
+            <p className="section-lead">Stay updated with the latest trends, tips, and insights from our team.</p>
           </div>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 sm:mb-16">
-            <div>
-              <h2 className="font-[family-name:var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-                Latest <span className="text-[#FF5C00]">Insights</span>
-              </h2>
-              <p className="text-[#888888] text-base sm:text-lg max-w-2xl">
-                Stay updated with the latest trends, tips, and insights from our team.
-              </p>
-            </div>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 glass-effect text-white font-[family-name:var(--font-syne)] font-bold rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 text-sm"
-            >
-              View All Posts
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+          <a href="#" className="btn-outline self-start md:self-auto">
+            View All Posts
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </a>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
-            <div
-              key={index}
-              className={`group glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 cursor-pointer ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            <article
+              key={post.title}
+              className={`card group flex cursor-pointer flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lift reveal ${
+                visible ? "is-visible" : ""
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: `${index * 90}ms` }}
             >
-              {/* Image */}
-              <div className="relative h-48 sm:h-56 overflow-hidden">
+              <div className="relative h-52 overflow-hidden bg-cream-deep">
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{ backgroundImage: `url(${post.image})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
-                
-                {/* Trending Badge */}
                 {post.trending && (
-                  <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-[#FF5C00]/90 backdrop-blur-sm rounded-full">
-                    <TrendingUp className="w-3 h-3 text-white" />
-                    <span className="text-xs font-[family-name:var(--font-jetbrains-mono)] text-white uppercase tracking-wider">
-                      Trending
+                  <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-orange-dark backdrop-blur">
+                    <TrendingUp className="h-3.5 w-3.5" strokeWidth={2} />
+                    Trending
+                  </span>
+                )}
+              </div>
+
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <span className="text-xs font-semibold uppercase tracking-[0.14em] text-orange">{post.category}</span>
+                <h3 className="mt-3 font-display text-xl font-semibold leading-snug tracking-tight text-ink transition-colors group-hover:text-orange">
+                  {post.title}
+                </h3>
+                <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-muted">{post.excerpt}</p>
+
+                <div className="mt-6 flex items-center justify-between border-t border-line pt-5 text-xs text-muted">
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      {post.date}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      {post.readTime}
                     </span>
                   </div>
-                )}
-
-                {/* Category */}
-                <div className="absolute bottom-4 left-4">
-                  <span className="px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-xs text-white font-[family-name:var(--font-jetbrains-mono)] uppercase tracking-wider">
-                    {post.category}
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors group-hover:text-orange">
+                    Read More
+                    <ArrowRight className="h-4 w-4" strokeWidth={2} />
                   </span>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold text-white mb-3 group-hover:text-[#FF5C00] transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-[#888888] leading-relaxed mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-
-                {/* Meta */}
-                <div className="flex items-center gap-4 text-xs text-[#888888]">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>{post.date}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-
-                {/* Read More */}
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-2 text-[#FF5C00] text-sm font-[family-name:var(--font-syne)] font-semibold group-hover:gap-3 transition-all">
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

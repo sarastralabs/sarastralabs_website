@@ -1,93 +1,60 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { useReveal } from "./useReveal";
+
+const benefits = ["Free Consultation", "24/7 Support", "Money-Back Guarantee"];
 
 export default function CTABanner() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useReveal<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="relative px-4 sm:px-6 md:px-12 py-16 sm:py-20 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className={`relative glass-effect rounded-3xl overflow-hidden transition-all duration-700 ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}>
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] animate-gradient" />
-          <div className="absolute inset-0 grid-pattern opacity-20" />
-          
-          {/* Floating Orbs */}
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+    <section ref={ref} className="relative py-12 sm:py-16">
+      <div className="container-page">
+        <div
+          className={`relative overflow-hidden rounded-[2rem] border border-line/80 bg-gradient-to-br from-white via-white to-orange-pale px-6 py-12 shadow-soft sm:px-12 sm:py-16 lg:px-16 reveal ${
+            visible ? "is-visible" : ""
+          }`}
+        >
+          <div aria-hidden="true" className="orb absolute -right-12 -top-12 h-40 w-40 opacity-70 sm:h-52 sm:w-52" />
+          <div aria-hidden="true" className="orb-glass absolute bottom-8 right-[38%] hidden h-16 w-16 lg:block" />
 
-          <div className="relative z-10 px-6 sm:px-12 md:px-16 py-12 sm:py-16 md:py-20">
-            <div className="max-w-4xl mx-auto text-center">
-              {/* Heading */}
-              <h2 className="font-[family-name:var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
-                Ready to Transform Your <span className="text-black">Vision</span> into Reality?
+          <div className="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+            <div>
+              <p className="eyebrow">Let&apos;s work together</p>
+              <h2 className="section-title mt-4">
+                Ready to transform your vision into reality?
               </h2>
-
-              {/* Description */}
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="section-lead">
                 Join 50+ businesses that have already accelerated their growth with our cutting-edge solutions.
               </p>
-
-              {/* Benefits */}
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8 sm:mb-10">
-                {[
-                  "Free Consultation",
-                  "24/7 Support",
-                  "Money-Back Guarantee",
-                ].map((benefit, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
-                  >
-                    <CheckCircle className="w-4 h-4 text-white" />
-                    <span className="text-sm text-white font-[family-name:var(--font-jetbrains-mono)]">
-                      {benefit}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="#contact"
-                  className="group w-full sm:w-auto px-8 py-4 bg-white text-[#FF5C00] font-[family-name:var(--font-syne)] font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3"
-                >
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+                <Link href="/#contact" className="btn-primary px-7 py-3.5">
                   Get Started Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
-                  href="#services"
-                  className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-[family-name:var(--font-syne)] font-bold rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300"
-                >
+                  <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                </Link>
+                <Link href="/#services" className="btn-ghost group">
                   View Our Work
-                </a>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
+                </Link>
               </div>
+            </div>
 
-              {/* Trust Badge */}
-              <p className="mt-8 text-sm text-white/70 font-[family-name:var(--font-jetbrains-mono)] uppercase tracking-wider">
+            <div className="relative rounded-3xl border border-line/80 bg-white/90 p-7 shadow-lift backdrop-blur sm:p-8">
+              <div className="absolute inset-x-0 top-0 h-1 rounded-t-3xl bg-orange" />
+              <p className="text-sm font-semibold text-ink">Every engagement includes</p>
+              <ul className="mt-5 space-y-4">
+                {benefits.map((benefit) => (
+                  <li key={benefit} className="flex items-center gap-3 text-[15px] text-ink-soft">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-pale">
+                      <Check className="h-3.5 w-3.5 text-orange" strokeWidth={2.5} />
+                    </span>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 border-t border-line pt-5 text-xs font-medium uppercase tracking-[0.12em] text-muted">
                 Trusted by startups to enterprises · 99% client satisfaction
               </p>
             </div>

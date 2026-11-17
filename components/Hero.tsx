@@ -1,170 +1,92 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { useEffect, useRef, useState } from "react";
-import { Bot } from "lucide-react";
+const stats = [
+  { label: "Projects", value: "50+" },
+  { label: "Clients", value: "30+" },
+  { label: "Services", value: "6" },
+  { label: "Success Rate", value: "99%" },
+];
 
 export default function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = Math.min(scrolled / maxScroll, 1);
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-    }> = [];
-
-    for (let i = 0; i < 50; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-      });
-    }
-
-    function animate() {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle, i) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 92, 0, 0.5)";
-        ctx.fill();
-
-        particles.forEach((otherParticle, j) => {
-          if (i === j) return;
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(255, 92, 0, ${0.2 - distance / 750})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <section className="relative bg-[#0A0A0A] min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 py-12 overflow-hidden">
-      {/* Animated Canvas Background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-        style={{ opacity: 0.6 }}
-      />
+    <section className="relative overflow-hidden pb-16 pt-32 sm:pb-24 sm:pt-40 lg:pb-28 lg:pt-44">
+      {/* Small decorative orb for phones/tablets */}
+      <div aria-hidden="true" className="orb absolute -right-10 top-24 h-28 w-28 opacity-80 sm:h-36 sm:w-36 lg:hidden" />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+        <div>
+          <p className="eyebrow animate-fade-up">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+            Software · AI · Digital · Education
+          </p>
 
-      {/* Animated Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] rounded-full blur-3xl opacity-20 animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[#FF7A2B] to-[#FF5C00] rounded-full blur-3xl opacity-20 animate-float" style={{ animationDelay: "3s" }} />
+          <h1
+            className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.04] tracking-[-0.035em] text-ink animate-fade-up sm:text-6xl lg:text-[4.25rem]"
+            style={{ animationDelay: "80ms" }}
+          >
+            Websites, software
+            {" "}
+            <br className="hidden sm:block" />
+            &amp; AI agents.
+            <br />
+            <span className="text-orange">Built for growth.</span>
+          </h1>
 
-      {/* Rotating Rings */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] -translate-y-1/2 translate-x-1/2">
-        <div className="absolute inset-0 rounded-full border border-[#FF5C00]/20 animate-rotate-slow" />
-        <div className="absolute inset-8 rounded-full border border-[#FF5C00]/30 animate-rotate-slow" style={{ animationDirection: "reverse", animationDuration: "15s" }} />
-        <div className="absolute inset-16 rounded-full border border-[#FF5C00]/40 animate-rotate-slow" style={{ animationDuration: "25s" }} />
-      </div>
+          <p
+            className="mt-6 max-w-xl text-base leading-relaxed text-muted animate-fade-up sm:text-lg"
+            style={{ animationDelay: "160ms" }}
+          >
+            Sarastra Labs designs websites, builds custom software and AI automation, and runs social media and
+            digital marketing for growing businesses. End-to-end, from idea to launch. Affordable. Fast.
+            Future-ready.
+          </p>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full text-center">
-        <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] sm:text-xs tracking-[0.2em] text-[#FF5C00] uppercase mb-6 sm:mb-8 animate-slide-up">
-          — Innovation Engine · Est. 2025
+          <div
+            className="mt-9 flex flex-col gap-3 animate-fade-up sm:flex-row sm:items-center sm:gap-6"
+            style={{ animationDelay: "240ms" }}
+          >
+            <Link href="/#contact" className="btn-primary px-7 py-3.5">
+              Start a Project
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <Link href="/#services" className="btn-ghost group">
+              Explore Services
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
+            </Link>
+          </div>
+
+          <dl
+            className="mt-14 grid max-w-xl grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8 animate-fade-up sm:grid-cols-4"
+            style={{ animationDelay: "320ms" }}
+          >
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <dd className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{stat.value}</dd>
+                <dt className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-muted">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <h1 className="font-[family-name:var(--font-syne)] text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white leading-none tracking-tight mb-6 animate-slide-up text-glow" style={{ animationDelay: "0.1s" }}>
-          Sarastra<span className="text-[#FF5C00]">Labs</span>
-        </h1>
-
-        <p className="font-[family-name:var(--font-space-grotesk)] text-sm sm:text-base md:text-lg tracking-wider text-[#888888] uppercase mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          Software · AI · Digital · Education
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-          <a
-            href="#services"
-            className="group relative px-8 py-4 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] text-white font-[family-name:var(--font-syne)] font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 glow-orange w-full sm:w-auto"
-          >
-            <span className="relative z-10">Explore Services</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A2B] to-[#FF5C00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
-          <a
-            href="#contact"
-            className="group px-8 py-4 glass-effect text-white font-[family-name:var(--font-syne)] font-bold rounded-full transition-all duration-300 hover:scale-105 hover:bg-white/10 w-full sm:w-auto"
-          >
-            Start a Project
-            <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
-          </a>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
-          {[
-            { label: "Projects", value: "50+" },
-            { label: "Clients", value: "30+" },
-            { label: "Services", value: "6" },
-            { label: "Success Rate", value: "99%" },
-          ].map((stat, i) => (
-            <div key={i} className="glass-effect p-4 sm:p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
-              <div className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl md:text-4xl font-bold text-[#FF5C00] mb-2 group-hover:scale-110 transition-transform">
-                {stat.value}
-              </div>
-              <div className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] sm:text-xs text-[#888888] uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+        {/* Decorative 3D composition */}
+        <div aria-hidden="true" className="relative hidden h-[520px] lg:block">
+          <div className="absolute inset-8 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,43,0.35),rgba(255,190,150,0.15)_60%,transparent)] blur-2xl" />
+          <div className="orb absolute right-2 top-6 h-28 w-28 animate-float-soft" style={{ animationDelay: "1.5s" }} />
+          <div className="orb-glass absolute bottom-16 left-0 h-24 w-24 animate-float-soft" style={{ animationDelay: "3s" }} />
+          <div className="orb absolute bottom-6 right-16 h-14 w-14 opacity-90 animate-float-soft" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/mark.png"
+            alt=""
+            width={720}
+            height={673}
+            className="absolute left-1/2 top-1/2 w-[340px] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_40px_60px_rgba(204,73,0,0.25)]"
+          />
+          <div className="absolute left-6 top-14 flex items-center gap-3 rounded-2xl border border-white bg-white/75 px-4 py-3 shadow-soft backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-orange" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-soft">Ideas into impact</span>
+          </div>
         </div>
       </div>
     </section>

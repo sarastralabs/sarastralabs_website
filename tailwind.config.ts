@@ -10,26 +10,30 @@ const config: Config = {
     extend: {
       colors: {
         orange: {
-          DEFAULT: '#FF5C00',
-          light: '#FF7A2B',
-          pale: '#FFF0E8',
-          dark: '#CC4900',
+          DEFAULT: "#FF5C00",
+          light: "#FF7A2B",
+          pale: "#FFF0E8",
+          dark: "#CC4900",
         },
+        cream: {
+          DEFAULT: "#FBF7F2",
+          deep: "#F5EEE5",
+        },
+        ink: {
+          DEFAULT: "#16130F",
+          soft: "#3A342D",
+        },
+        muted: "#6E665D",
+        line: "#ECE3D8",
       },
       fontFamily: {
-        syne: ['var(--font-syne)', 'sans-serif'],
-        'space-grotesk': ['var(--font-space-grotesk)', 'sans-serif'],
-        'jetbrains-mono': ['var(--font-jetbrains-mono)', 'monospace'],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-inter)", "system-ui", "sans-serif"],
       },
-      animation: {
-        'scroll-wheel': 'scroll-wheel 1.5s ease-in-out infinite',
-        'bounce-slow': 'bounce 2s infinite',
-      },
-      keyframes: {
-        'scroll-wheel': {
-          '0%, 100%': { transform: 'translateY(0)', opacity: '1' },
-          '50%': { transform: 'translateY(8px)', opacity: '0.5' },
-        },
+      boxShadow: {
+        soft: "0 1px 2px rgba(22, 19, 15, 0.04), 0 8px 24px -8px rgba(22, 19, 15, 0.08)",
+        lift: "0 2px 4px rgba(22, 19, 15, 0.04), 0 24px 48px -16px rgba(22, 19, 15, 0.14)",
+        glow: "0 10px 30px -10px rgba(255, 92, 0, 0.55)",
       },
     },
   },

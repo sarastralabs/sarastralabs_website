@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+      <SoftBackground />
+      <Navbar />
+      <main className="relative pt-16 sm:pt-20">
         <Contact />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }
