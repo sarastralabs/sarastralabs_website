@@ -4,10 +4,10 @@ import HeroArt, { HeroArtMobile } from "./HeroArt";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-36 md:pt-44 lg:pb-32 lg:pt-52">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-12 pt-28 sm:pb-16 sm:pt-32 md:pt-36 lg:pb-16 lg:pt-32">
       <HeroArt />
 
-      <div className="container-page relative">
+      <div className="container-page relative w-full">
         <div className="min-w-0 lg:max-w-[600px]">
           <Link
             href="/#products"
