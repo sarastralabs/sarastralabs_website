@@ -48,9 +48,8 @@ Internships & open-source programs — the bridge from classroom to the real tec
 - **Signal White** (#FFFFFF) - Backgrounds, Contrast
 
 ### Typography
-- **Syne** - Headlines, Logo, Display
-- **Space Grotesk** - Body, UI, Subheadings
-- **JetBrains Mono** - Code, Labels, Stats, Tags
+- **Inter Tight** - Headlines, Display
+- **Inter** - Body, UI, Labels
 
 ### Brand Voice
 We speak with confidence, not arrogance. We're future-forward, student-first, and never corporate-speak. We don't just build software — we build momentum.
@@ -66,8 +65,30 @@ We speak with confidence, not arrogance. We're future-forward, student-first, an
 ### Follow Us
 - [LinkedIn](https://www.linkedin.com/company/sarastralabs)
 - [X (Twitter)](https://x.com/LabsSarastra)
-- [Instagram](https://www.instagram.com/sarastralabs)
+- [Instagram](https://www.instagram.com/sarastra.labs/)
 - [YouTube](https://www.youtube.com/@sarastralabs)
+
+---
+
+## Instagram feed ("Latest insights")
+
+The Insights section on the home page and `/blog` shows the latest posts from
+Instagram when `INSTAGRAM_ACCESS_TOKEN` is set, and the built-in articles when
+it is not. Posts are cached and refreshed at most once an hour (`lib/instagram.ts`).
+
+1. Make sure the Instagram account is a **Professional** account (Business or Creator).
+2. At [developers.facebook.com](https://developers.facebook.com/), create an app,
+   add the **Instagram** product and choose *API setup with Instagram login*.
+3. Add the Instagram account under *Generate access tokens* and generate a token
+   (it is a long-lived token, valid for 60 days).
+4. Set it as `INSTAGRAM_ACCESS_TOKEN` in Vercel (Project → Settings →
+   Environment Variables) and redeploy. Locally, put it in `.env.local`
+   (see `.env.example`).
+
+Renewing: long-lived tokens expire after 60 days. Refresh before then with
+`https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=<TOKEN>`
+and update the environment variable. If the token expires, the site quietly
+falls back to the built-in articles.
 
 ---
 

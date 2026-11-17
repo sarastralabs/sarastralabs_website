@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import PageHeader from "@/components/PageHeader";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,12 +19,18 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+      <SoftBackground />
+      <Navbar />
+      <main className="relative">
+        <PageHeader
+          crumb="Contact"
+          eyebrow="Contact us"
+          title="Let’s talk about your project."
+          lead="Email, call or send us a message. We typically respond within 24 hours on business days."
+        />
         <Contact />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }

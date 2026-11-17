@@ -1,7 +1,12 @@
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import PageHeader from "@/components/PageHeader";
+import StatsBand from "@/components/StatsBand";
+import Process from "@/components/Process";
+import WhyUs from "@/components/WhyUs";
+import CTABanner from "@/components/CTABanner";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,12 +23,22 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+      <SoftBackground />
+      <Navbar />
+      <main className="relative">
+        <PageHeader
+          crumb="About"
+          eyebrow="About us"
+          title="India’s innovation engine for the next generation."
+          lead="Sarastra Labs delivers smart, affordable, end-to-end technology to businesses and students alike — without gatekeeping knowledge or inflating costs."
+        />
         <About />
-        <Footer />
-      </div>
+        <StatsBand />
+        <Process />
+        <WhyUs />
+        <CTABanner />
+      </main>
+      <Footer />
     </>
   );
 }

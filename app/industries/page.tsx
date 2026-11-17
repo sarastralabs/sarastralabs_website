@@ -1,7 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Industries from "@/components/Industries";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import PageHeader from "@/components/PageHeader";
+import StatsBand from "@/components/StatsBand";
+import WhyUs from "@/components/WhyUs";
+import CTABanner from "@/components/CTABanner";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,12 +29,21 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+      <SoftBackground />
+      <Navbar />
+      <main className="relative">
+        <PageHeader
+          crumb="Industries"
+          eyebrow="Industries"
+          title="Solutions shaped for your sector."
+          lead="Delivering specialized solutions across diverse sectors with deep domain expertise."
+        />
         <Industries />
-        <Footer />
-      </div>
+        <StatsBand />
+        <WhyUs />
+        <CTABanner />
+      </main>
+      <Footer />
     </>
   );
 }

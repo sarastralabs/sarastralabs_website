@@ -1,7 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import { getInstagramPosts } from "@/lib/instagram";
+import PageHeader from "@/components/PageHeader";
+import CTABanner from "@/components/CTABanner";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,15 +25,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const instagramPosts = await getInstagramPosts(9);
+
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
-        <Blog />
-        <Footer />
-      </div>
+      <SoftBackground />
+      <Navbar />
+      <main className="relative">
+        <PageHeader
+          crumb="Insights"
+          eyebrow="Insights"
+          title="Ideas, guides and trends from our team."
+          lead="Stay updated with the latest trends, tips, and insights from our team."
+        />
+        <Blog instagramPosts={instagramPosts} />
+        <CTABanner />
+      </main>
+      <Footer />
     </>
   );
 }

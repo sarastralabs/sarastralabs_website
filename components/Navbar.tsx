@@ -1,183 +1,206 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, User, Briefcase, FileText, Rocket, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, Mail, Phone, MapPin, Code2, LayoutDashboard, TrendingUp, Palette, Bot, Rocket, GraduationCap } from "lucide-react";
+import { socialLinks } from "./SocialIcons";
+
+const serviceMenu = [
+  { icon: Code2, name: "Software Services", desc: "Web & mobile apps, APIs, SaaS" },
+  { icon: LayoutDashboard, name: "Custom Business Software", desc: "Billing, inventory, CRM, bookings" },
+  { icon: Palette, name: "Website Design", desc: "Landing pages, e-commerce, UI/UX" },
+  { icon: TrendingUp, name: "Digital Marketing", desc: "SEO, social media, paid ads" },
+  { icon: Bot, name: "AI Agents", desc: "Chatbots, workflows, automation" },
+  { icon: Rocket, name: "NexGen Projects", desc: "Student & early-career projects" },
+  { icon: GraduationCap, name: "Labs Launchpad", desc: "Internships & open source" },
+];
+
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services", menu: true },
+  { href: "/#products", label: "Products", soon: true },
+  { href: "/industries", label: "Industries" },
+  { href: "/blog", label: "Insights" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-8 pt-4 sm:pt-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Main Navbar Container with Enhanced Glass Effect */}
-          <div
-            className={`relative overflow-hidden rounded-full transition-all duration-500 ${
-              scrolled
-                ? "bg-[#1A1410]/98 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
-                : "bg-[#1A1410]/95 backdrop-blur-md"
-            }`}
-            style={{
-              border: "1px solid rgba(255, 92, 0, 0.15)",
-              boxShadow: scrolled
-                ? "0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 92, 0, 0.08)"
-                : "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 92, 0, 0.05)",
-            }}
-          >
-          {/* Gradient Border Top */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF5C00]/50 to-transparent" />
-          
-          {/* Ambient Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF5C00]/5 via-transparent to-[#FF7A2B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          <div className="relative px-4 sm:px-6 md:px-8">
-            <div className="flex items-center justify-between h-16 sm:h-20">
-              {/* Logo with Icon */}
-              <a
-                href="#"
-                className="group flex items-center gap-2 sm:gap-3 hover:scale-105 transition-transform duration-300"
-              >
-                {/* Logo Icon */}
-                <div className="relative">
-                  <img src="/logo.svg" alt="Sarastra Labs Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
-                </div>
-                
-                {/* Logo Text */}
-                <span className="font-[family-name:var(--font-syne)] text-lg sm:text-xl md:text-2xl font-extrabold text-white tracking-tight">
-                  Sarastra<span className="text-[#FF5C00]">Labs</span>
-                </span>
-              </a>
-
-              {/* Desktop Menu */}
-              <div className="hidden md:flex items-center gap-2 lg:gap-3">
-                {/* Navigation Links */}
-                <div className="flex items-center gap-1 lg:gap-2 mr-4">
-                  {[
-                    { href: "#about", label: "About" },
-                    { href: "#services", label: "Services" },
-                    { href: "#blog", label: "Blog" },
-                  ].map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="relative px-4 lg:px-5 py-2 text-sm lg:text-base text-white/70 hover:text-white transition-all duration-300 group/link rounded-full"
-                    >
-                      <span className="relative z-10">{link.label}</span>
-                      {/* Hover Background */}
-                      <div className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
-                      {/* Active Indicator */}
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] rounded-full group-hover/link:w-3/4 transition-all duration-300" />
-                    </a>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <a
-                  href="#contact"
-                  className="group/cta relative px-6 lg:px-8 py-2.5 lg:py-3 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] text-white font-[family-name:var(--font-syne)] font-semibold text-sm lg:text-base rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#FF5C00]/50"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Contact
-                    <span className="inline-block transition-transform group-hover/cta:translate-x-1">→</span>
-                  </span>
-                  {/* Animated Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A2B] to-[#FF5C00] opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300" />
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* Utility bar */}
+      <div
+        className={`hidden overflow-hidden bg-ink text-white/80 transition-[max-height] duration-300 md:block ${
+          scrolled ? "max-h-0" : "max-h-10"
+        }`}
+      >
+        <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex h-10 items-center justify-between text-[13px]">
+          <div className="flex items-center gap-6">
+            <a href="mailto:info@sarastralabs.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <Mail className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
+              info@sarastralabs.com
+            </a>
+            <a href="tel:+919353622801" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <Phone className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
+              +91 93536 22801
+            </a>
+            <span className="hidden items-center gap-2 lg:inline-flex">
+              <MapPin className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
+              Mangalore, India
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="hidden text-white/60 lg:inline">Follow us</span>
+            {socialLinks.map((s) => {
+              const Icon = s.icon;
+              return (
+                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.name} className="transition-colors hover:text-orange-light">
+                  <Icon className="h-4 w-4" />
                 </a>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden relative p-3 text-white rounded-full transition-all duration-300 group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FF5C00]/50"
-                aria-label="Toggle menu"
-              >
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-full bg-[#FF5C00]/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
-                
-                <div className="relative w-6 h-6 flex items-center justify-center">
-                  {isOpen ? (
-                    <X className="w-6 h-6 transition-all duration-300 group-hover:rotate-90 text-[#FF5C00]" strokeWidth={2.5} />
-                  ) : (
-                    <Menu className="w-6 h-6 transition-all duration-300 group-hover:scale-110 text-white group-hover:text-[#FF5C00]" strokeWidth={2.5} />
-                  )}
+      {/* Main bar */}
+      <div
+        className={`border-b transition-all duration-300 ${
+          isOpen
+            ? "border-line/70 bg-cream shadow-soft"
+            : scrolled
+              ? "border-line/70 bg-cream/90 shadow-soft backdrop-blur-md"
+              : "border-transparent bg-transparent"
+        }`}
+      >
+        <nav className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex h-16 items-center justify-between md:h-[76px] gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-8" aria-label="Main">
+          <Link href="/" className="flex shrink-0 items-center justify-self-start" aria-label="Sarastra Labs home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/logo-signature.png" alt="Sarastra Labs" width={615} height={96} className="h-7 w-auto max-w-none shrink-0 md:h-8" />
+          </Link>
+
+          <div className="hidden items-center gap-0 lg:flex xl:gap-3 2xl:gap-5">
+            {links.map((link) =>
+              link.menu ? (
+                <div key={link.href} className="group relative">
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-1 rounded-full px-2 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 xl:px-3"
+                  >
+                    {link.label}
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" strokeWidth={2} />
+                  </Link>
+                  {/* Services dropdown */}
+                  <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <div className="card grid grid-cols-2 gap-1 p-3 shadow-lift">
+                      {serviceMenu.map((s) => {
+                        const Icon = s.icon;
+                        return (
+                          <Link key={s.name} href="/services" className="flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-cream">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-pale text-orange">
+                              <Icon className="h-4 w-4" strokeWidth={1.75} />
+                            </span>
+                            <span>
+                              <span className="block text-sm font-semibold text-ink">{s.name}</span>
+                              <span className="block text-[13px] text-muted">{s.desc}</span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                      <Link
+                        href="/services"
+                        className="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-ink transition-colors hover:text-orange"
+                      >
+                        View all services
+                        <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-1.5 rounded-full px-2 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 xl:px-3"
+                >
+                  {link.label}
+                  {link.soon && (
+                    <span className="rounded-full bg-orange-pale px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-orange-dark">
+                      Soon
+                    </span>
+                  )}
+                </Link>
+              )
+            )}
+          </div>
+
+          <div className="hidden justify-self-end lg:block">
+            <Link href="/contact" className="btn-primary whitespace-nowrap px-5 py-2.5">
+              <span className="xl:hidden">Free Consultation</span>
+              <span className="hidden xl:inline">Get a Free Consultation</span>
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
+            </Link>
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="-mr-2 rounded-full p-2 text-ink transition-colors hover:bg-white lg:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-6 w-6" strokeWidth={1.75} /> : <Menu className="h-6 w-6" strokeWidth={1.75} />}
+          </button>
+        </nav>
+
+        {/* Mobile menu */}
+        <div
+          className={`overflow-y-auto transition-[max-height,opacity] duration-300 lg:hidden ${
+            isOpen ? "max-h-[calc(100vh-64px)] opacity-100" : "pointer-events-none max-h-0 opacity-0"
+          }`}
+        >
+          <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex flex-col gap-1 pb-6 pt-2">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-between rounded-2xl px-3 py-3.5 text-lg font-medium text-ink transition-colors hover:bg-white"
+              >
+                <span className="inline-flex items-center gap-2">
+                  {link.label}
+                  {link.soon && (
+                    <span className="rounded-full bg-orange-pale px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-orange-dark">
+                      Soon
+                    </span>
+                  )}
+                </span>
+                <ArrowRight className="h-4 w-4 text-muted" strokeWidth={1.75} />
+              </Link>
+            ))}
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="btn-primary mt-3 py-3.5 text-base">
+              Get a Free Consultation
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <div className="mt-5 space-y-2 border-t border-line pt-5 text-sm text-muted">
+              <a href="mailto:info@sarastralabs.com" className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-orange" strokeWidth={1.75} /> info@sarastralabs.com
+              </a>
+              <a href="tel:+919353622801" className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-orange" strokeWidth={1.75} /> +91 93536 22801
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </nav>
-
-    {/* Mobile Menu - Outside navbar container */}
-    <div
-      className={`md:hidden fixed left-4 right-4 transition-all duration-300 ease-out ${
-        isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'
-      }`}
-      style={{
-        top: '100px',
-        maxHeight: 'calc(100vh - 120px)',
-        zIndex: 9999,
-      }}
-    >
-      {/* Backdrop overlay with blur */}
-      <div className="absolute inset-0 bg-[#2B1F1A]/95 backdrop-blur-xl rounded-3xl border-2 border-[#FF5C00]/20 shadow-2xl" />
-      
-      <div className="relative p-8 flex flex-col gap-4">
-        {/* Menu items */}
-        {[
-          { href: "#about", label: "About", icon: User },
-          { href: "#services", label: "Services", icon: Briefcase },
-          { href: "#blog", label: "Blog", icon: FileText },
-        ].map((link, index) => {
-          const IconComponent = link.icon;
-          return (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group/mobile relative px-6 py-5 text-lg text-white bg-[#3D2D24]/80 hover:bg-[#3D2D24]/90 rounded-2xl transition-colors duration-200 border border-[#FF5C00]/20 hover:border-[#FF5C00]/50"
-              onClick={() => setIsOpen(false)}
-            >
-              
-              <span className="relative flex items-center justify-between">
-                <span className="flex items-center gap-3">
-                  <IconComponent className="w-5 h-5 text-[#FF5C00]" strokeWidth={2} />
-                  <span className="font-[family-name:var(--font-syne)] font-bold">{link.label}</span>
-                </span>
-                <ArrowRight className="w-5 h-5 opacity-0 group-hover/mobile:opacity-100 group-hover/mobile:translate-x-2 transition-all duration-300 text-[#FF5C00]" strokeWidth={2} />
-              </span>
-            </a>
-          );
-        })}
-        
-        {/* Divider */}
-        <div className="relative h-px my-2">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF5C00]/30 to-transparent blur-sm" />
-        </div>
-        
-        {/* Contact button */}
-        <a
-          href="#contact"
-          className="relative group/cta px-8 py-6 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] text-white font-[family-name:var(--font-syne)] font-bold text-xl text-center rounded-2xl transition-all duration-200 hover:brightness-110 shadow-lg shadow-[#FF5C00]/30 overflow-hidden"
-          onClick={() => setIsOpen(false)}
-        >
-          
-          <span className="relative flex items-center justify-center gap-3">
-            <span className="text-shadow-lg">Contact Us</span>
-            <Rocket className="w-6 h-6 inline-block transition-all duration-300 group-hover/cta:translate-x-1 group-hover/cta:-translate-y-1 group-hover/cta:rotate-12" strokeWidth={2.5} />
-          </span>
-        </a>
-      </div>
-    </div>
-  </>
+    </header>
   );
 }

@@ -1,7 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import PageHeader from "@/components/PageHeader";
+import Process from "@/components/Process";
+import WhyUs from "@/components/WhyUs";
+import CTABanner from "@/components/CTABanner";
+import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,12 +31,21 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+      <SoftBackground />
+      <Navbar />
+      <main className="relative">
+        <PageHeader
+          crumb="Services"
+          eyebrow="Our services"
+          title="End-to-end software, AI and digital solutions."
+          lead="From concept to deployment, we deliver cutting-edge solutions that drive real results."
+        />
         <Services />
-        <Footer />
-      </div>
+        <Process />
+        <WhyUs />
+        <CTABanner />
+      </main>
+      <Footer />
     </>
   );
 }

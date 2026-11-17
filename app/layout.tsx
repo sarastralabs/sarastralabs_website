@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Syne, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
+  variable: "--font-inter",
+  display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains-mono",
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -116,7 +111,7 @@ export default function RootLayout({
     "sameAs": [
       "https://www.linkedin.com/in/sarastra-labs-bb3595405/",
       "https://x.com/LabsSarastra",
-      "https://www.instagram.com/sarastralabs",
+      "https://www.instagram.com/sarastra.labs/",
       "https://www.youtube.com/@sarastralabs"
     ],
     "offers": {
@@ -169,11 +164,10 @@ export default function RootLayout({
         <link rel="canonical" href="https://sarastralabs.com" />
         <meta name="theme-color" content="#FF5C00" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body
-        className={`${syne.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
-        style={{ fontFamily: 'var(--font-space-grotesk), sans-serif' }}
+        className={`${inter.variable} ${interTight.variable} font-sans antialiased`}
       >
         {children}
       </body>

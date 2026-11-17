@@ -1,95 +1,81 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Phone } from "lucide-react";
+import { useReveal } from "./useReveal";
 
+/** Dark closing call-to-action with the animated Sarastra mascot. */
 export default function CTABanner() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useReveal<HTMLElement>(0.25);
 
   return (
-    <section ref={sectionRef} className="relative px-4 sm:px-6 md:px-12 py-16 sm:py-20 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className={`relative glass-effect rounded-3xl overflow-hidden transition-all duration-700 ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}>
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF5C00] to-[#FF7A2B] animate-gradient" />
-          <div className="absolute inset-0 grid-pattern opacity-20" />
-          
-          {/* Floating Orbs */}
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+    <section ref={ref} className="pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pt-24">
+      <div className="container-page">
+        <div className="relative rounded-[2rem] bg-ink text-white">
+          {/* Glows (clipped to the card) */}
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden rounded-[2rem]">
+            <div className="absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-[radial-gradient(closest-side,rgba(255,92,0,0.35),transparent)] blur-2xl" />
+            <div className="absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,92,0,0.28),transparent)] blur-2xl" />
+          </div>
 
-          <div className="relative z-10 px-6 sm:px-12 md:px-16 py-12 sm:py-16 md:py-20">
-            <div className="max-w-4xl mx-auto text-center">
-              {/* Heading */}
-              <h2 className="font-[family-name:var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
-                Ready to Transform Your <span className="text-black">Vision</span> into Reality?
+          <div className="relative grid items-end gap-4 lg:grid-cols-[1.6fr_1fr] xl:grid-cols-[1.25fr_0.75fr]">
+            {/* Text */}
+            <div className="order-2 px-6 pb-14 sm:px-12 sm:pb-16 lg:order-1 lg:max-w-[560px] lg:py-20 lg:pl-12 lg:pr-0 xl:max-w-none xl:px-16">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-light">Let&apos;s work together</p>
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.1] tracking-[-0.025em] sm:text-4xl md:text-5xl lg:max-w-[440px] lg:text-[2.6rem] xl:max-w-none xl:text-5xl">
+                Ready to transform your vision into reality?
               </h2>
-
-              {/* Description */}
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-                Join 50+ businesses that have already accelerated their growth with our cutting-edge solutions.
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg lg:max-w-[420px] xl:max-w-xl">
+                Tell us about your project. We typically respond within 24 hours on business days.
               </p>
-
-              {/* Benefits */}
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8 sm:mb-10">
-                {[
-                  "Free Consultation",
-                  "24/7 Support",
-                  "Money-Back Guarantee",
-                ].map((benefit, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
-                  >
-                    <CheckCircle className="w-4 h-4 text-white" />
-                    <span className="text-sm text-white font-[family-name:var(--font-jetbrains-mono)]">
-                      {benefit}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="#contact"
-                  className="group w-full sm:w-auto px-8 py-4 bg-white text-[#FF5C00] font-[family-name:var(--font-syne)] font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3"
-                >
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <Link href="/contact" className="btn-primary whitespace-nowrap px-7 py-3.5 focus-visible:ring-offset-ink">
                   Get Started Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+                  <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                </Link>
                 <a
-                  href="#services"
-                  className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-[family-name:var(--font-syne)] font-bold rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300"
+                  href="tel:+919353622801"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50 sm:text-[15px]"
                 >
-                  View Our Work
+                  <Phone className="h-4 w-4" strokeWidth={2} />
+                  +91 93536 22801
                 </a>
               </div>
+            </div>
 
-              {/* Trust Badge */}
-              <p className="mt-8 text-sm text-white/70 font-[family-name:var(--font-jetbrains-mono)] uppercase tracking-wider">
-                Trusted by startups to enterprises · 99% client satisfaction
-              </p>
+            {/* Mascot — pops out above the card */}
+            <div className="relative order-1 flex justify-center lg:order-2 lg:self-stretch">
+              <div
+                className={`mascot-wrap relative -mt-24 w-[200px] sm:-mt-28 sm:w-[240px] lg:absolute lg:bottom-6 lg:right-2 lg:mt-0 lg:w-[420px] xl:bottom-6 xl:right-12 xl:w-[440px] ${
+                  visible ? "is-in" : ""
+                }`}
+              >
+                {/* Pulsing halo */}
+                <div aria-hidden="true" className="mascot-halo absolute left-1/2 top-[38%] h-[70%] w-[110%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                {/* Orbiting sparks */}
+                <span aria-hidden="true" className="mascot-spark absolute left-[6%] top-[22%] h-3 w-3 rounded-full bg-orange-light" />
+                <span aria-hidden="true" className="mascot-spark absolute right-[4%] top-[48%] h-2 w-2 rounded-full bg-white/80" style={{ animationDelay: "1.2s" }} />
+                <span aria-hidden="true" className="mascot-spark absolute left-[14%] top-[62%] h-2.5 w-2.5 rounded-full bg-orange" style={{ animationDelay: "2.1s" }} />
+
+                {/* Speech bubble */}
+                <div className="mascot-bubble absolute -right-16 top-[2%] z-10 whitespace-nowrap rounded-2xl rounded-bl-md bg-white px-3.5 py-2 text-xs font-semibold text-ink shadow-lift sm:-right-28 sm:text-sm max-[380px]:-right-6 max-[380px]:-top-8 lg:left-auto lg:right-[92%] lg:top-[20%] lg:rounded-bl-2xl lg:rounded-br-md lg:px-4 lg:py-2.5">
+                  Let&apos;s build it together!
+                </div>
+
+                <div className="mascot-float relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/brand/mascot.webp"
+                    alt="Sarastra Labs mascot giving a thumbs up"
+                    width={626}
+                    height={700}
+                    loading="lazy"
+                    className="mascot-img relative w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.45)]"
+                  />
+                </div>
+                {/* Ground shadow */}
+                <div aria-hidden="true" className="mascot-shadow mx-auto -mt-3 h-4 w-1/2 rounded-[50%] bg-black/50 blur-md" />
+              </div>
             </div>
           </div>
         </div>
