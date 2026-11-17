@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Code2, TrendingUp, Palette, Bot, Rocket, GraduationCap, ArrowRight, Check, X } from "lucide-react";
+import { useState } from "react";
+import { Code2, TrendingUp, Palette, Bot, Rocket, GraduationCap, ArrowRight, Check } from "lucide-react";
 import { useReveal } from "./useReveal";
 
 const services = [
@@ -104,18 +104,66 @@ const services = [
   },
 ];
 
+type Service = (typeof services)[number];
+
+function ServiceDetail({ service, compact = false }: { service: Service; compact?: boolean }) {
+  const Icon = service.icon;
+  return (
+    <div className={compact ? "" : "flex h-full flex-col"}>
+      {!compact && (
+        <div className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white">
+          <div aria-hidden="true" className="orb absolute -right-10 -top-10 h-40 w-40 opacity-90" />
+          <div className="relative flex items-start justify-between gap-4">
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-orange-light backdrop-blur">
+              <Icon className="h-7 w-7" strokeWidth={1.5} />
+            </span>
+          </div>
+          <p className="relative mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-orange-light">
+            {service.num} — Service
+          </p>
+          <h3 className="relative mt-2 font-display text-3xl font-semibold tracking-tight">{service.name}</h3>
+          <p className="relative mt-3 max-w-md text-[15px] leading-relaxed text-white/70">{service.desc}</p>
+          <span
+            className={`relative mt-6 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${
+              service.active ? "bg-orange text-white" : "bg-white/10 text-white/70"
+            }`}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${service.active ? "bg-white" : "bg-white/50"}`} />
+            {service.status}
+          </span>
+        </div>
+      )}
+
+      <div className={compact ? "pt-1" : "flex flex-1 flex-col p-8"}>
+        <p className="text-sm font-semibold text-ink">What we offer</p>
+        <ul className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+          {service.subServices.map((sub) => (
+            <li key={sub} className="flex items-start gap-2.5 text-[15px] text-ink-soft">
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-pale">
+                <Check className="h-3 w-3 text-orange" strokeWidth={3} />
+              </span>
+              {sub}
+            </li>
+          ))}
+        </ul>
+        <div className={`flex flex-wrap items-center gap-4 ${compact ? "mt-6" : "mt-auto pt-8"}`}>
+          <Link href="/contact" className="btn-primary">
+            {service.active ? "Start a Project" : "Get notified"}
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </Link>
+          <Link href="/contact" className="btn-ghost">
+            Free consultation
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [active, setActive] = useState(0);
   const { ref, visible } = useReveal<HTMLElement>(0.05);
-
-  useEffect(() => {
-    if (selectedIndex === null) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelectedIndex(null);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [selectedIndex]);
-
-  const selected = selectedIndex !== null ? services[selectedIndex] : null;
+  const current = services[active];
 
   return (
     <section ref={ref} className="section-pad relative">
@@ -138,116 +186,75 @@ export default function Services() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                role="button"
-                tabIndex={0}
-                key={service.num}
-                onClick={() => setSelectedIndex(index)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setSelectedIndex(index);
-                  }
-                }}
-                className={`card group relative flex cursor-pointer flex-col p-7 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange reveal ${
-                  visible ? "is-visible" : ""
-                } ${service.active ? "" : "bg-white/60"}`}
-                style={{ transitionDelay: `${index * 70}ms` }}
-              >
-                <div className="flex items-start justify-between">
-                  <span
-                    className={`flex h-12 w-12 items-center justify-center rounded-2xl ${
-                      service.active ? "bg-orange-pale text-orange" : "bg-cream-deep text-muted"
-                    }`}
-                  >
-                    <Icon className="h-6 w-6" strokeWidth={1.6} />
-                  </span>
-                  <span className="text-sm font-medium tabular-nums text-muted/70">{service.num}</span>
-                </div>
-                <h3 className="mt-7 font-display text-xl font-semibold tracking-tight text-ink">{service.name}</h3>
-                <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-muted">{service.desc}</p>
-                <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-                  <span
-                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${
-                      service.active ? "bg-orange-pale text-orange-dark" : "bg-cream-deep text-muted"
-                    }`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${service.active ? "bg-orange" : "bg-muted/60"}`} />
-                    {service.status}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors group-hover:text-orange">
-                    Details
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Detail modal */}
-      {selected && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/30 p-4 backdrop-blur-sm"
-          onClick={() => setSelectedIndex(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="service-modal-title"
+          className={`mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8 reveal ${visible ? "is-visible" : ""}`}
+          style={{ transitionDelay: "120ms" }}
         >
-          <div
-            className="card relative max-h-[90vh] w-full max-w-[540px] overflow-y-auto p-7 shadow-lift animate-popup-in sm:p-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="absolute inset-x-0 top-0 h-1 bg-orange" />
-            <button
-              onClick={() => setSelectedIndex(null)}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-cream-deep hover:text-ink"
-              aria-label="Close modal"
-            >
-              <X className="h-5 w-5" strokeWidth={1.75} />
-            </button>
+          {/* Service list (accordion on phones) */}
+          <ul className="card divide-y divide-line overflow-hidden p-2">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              const isActive = index === active;
+              return (
+                <li key={service.num}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(index)}
+                    onMouseEnter={() => window.matchMedia("(min-width: 1024px)").matches && setActive(index)}
+                    aria-expanded={isActive}
+                    className={`group flex w-full items-center gap-4 rounded-2xl px-4 py-4 text-left transition-colors sm:px-5 sm:py-5 ${
+                      isActive ? "bg-cream" : "hover:bg-cream/60"
+                    }`}
+                  >
+                    <span
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                        isActive ? "bg-orange text-white shadow-glow" : "bg-orange-pale text-orange"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-center gap-2">
+                        <span className="font-display text-lg font-semibold tracking-tight text-ink">{service.name}</span>
+                        {!service.active && (
+                          <span className="rounded-full bg-cream-deep px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-muted">
+                            Soon
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-0.5 block truncate text-sm text-muted">{service.desc}</span>
+                    </span>
+                    <span className={`hidden font-display text-sm font-semibold tabular-nums sm:block ${isActive ? "text-orange" : "text-muted/60"}`}>
+                      {service.num}
+                    </span>
+                    <ArrowRight
+                      className={`h-4 w-4 shrink-0 transition-all ${
+                        isActive ? "rotate-90 text-orange lg:rotate-0" : "text-muted lg:opacity-0 lg:group-hover:opacity-100"
+                      }`}
+                      strokeWidth={2}
+                    />
+                  </button>
 
-            <div className="flex items-start gap-4 pr-8">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange-pale text-orange">
-                <selected.icon className="h-6 w-6" strokeWidth={1.6} />
-              </span>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange">{selected.num} — Service</p>
-                <h4 id="service-modal-title" className="mt-1 font-display text-xl font-semibold tracking-tight text-ink">
-                  {selected.name}
-                </h4>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{selected.desc}</p>
-              </div>
-            </div>
-
-            <p className="mt-7 text-sm font-semibold text-ink">What we offer</p>
-            <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
-              {selected.subServices.map((sub) => (
-                <li key={sub} className="flex items-start gap-2.5 rounded-xl bg-cream px-3 py-2.5 text-sm text-ink-soft">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange" strokeWidth={2.25} />
-                  {sub}
+                  {/* Inline details on phones/tablets */}
+                  {isActive && (
+                    <div className="px-4 pb-6 pt-2 animate-popup-in sm:px-5 lg:hidden">
+                      <p className="mb-5 text-[15px] leading-relaxed text-muted">{service.desc}</p>
+                      <ServiceDetail service={service} compact />
+                    </div>
+                  )}
                 </li>
-              ))}
-            </ul>
+              );
+            })}
+          </ul>
 
-            <div className="mt-7 flex flex-col-reverse gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-muted">
-                <span className={`h-1.5 w-1.5 rounded-full ${selected.active ? "bg-orange" : "bg-muted/60"}`} />
-                {selected.status}
-              </span>
-              <Link href="/contact" onClick={() => setSelectedIndex(null)} className="btn-primary">
-                Start a Project
-                <ArrowRight className="h-4 w-4" strokeWidth={2} />
-              </Link>
+          {/* Detail panel (desktop) */}
+          <div className="card hidden overflow-hidden p-2 lg:block">
+            <div key={current.num} className="h-full animate-popup-in">
+              <ServiceDetail service={current} />
             </div>
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }
