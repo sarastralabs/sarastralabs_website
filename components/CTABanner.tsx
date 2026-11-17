@@ -58,7 +58,7 @@ export default function CTABanner() {
                 <span aria-hidden="true" className="mascot-spark absolute left-[14%] top-[62%] h-2.5 w-2.5 rounded-full bg-orange" style={{ animationDelay: "2.1s" }} />
 
                 {/* Speech bubble */}
-                <div className="mascot-bubble absolute -right-16 top-[2%] z-10 whitespace-nowrap rounded-2xl rounded-bl-md bg-white px-3.5 py-2 text-xs font-semibold text-ink shadow-lift sm:-right-28 sm:text-sm max-[380px]:-right-6 max-[380px]:-top-8 lg:-top-6 lg:left-auto lg:right-[58%] lg:rounded-bl-2xl lg:rounded-br-md lg:px-4 lg:py-2.5">
+                <div className="mascot-bubble absolute -right-16 top-[2%] z-10 whitespace-nowrap rounded-2xl rounded-bl-md bg-white px-3.5 py-2 text-xs font-semibold text-ink shadow-lift sm:-right-28 sm:text-sm max-[380px]:-right-6 max-[380px]:-top-8 lg:left-auto lg:right-[80%] lg:top-[24%] lg:rounded-bl-2xl lg:rounded-br-md lg:px-4 lg:py-2.5">
                   Let&apos;s build it together!
                 </div>
 
