@@ -1,12 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, Clock, Code2, Palette, TrendingUp, Bot, MapPin } from "lucide-react";
-
-const deliverables = [
-  { icon: Code2, name: "Software Services", desc: "Web & mobile apps, APIs, SaaS" },
-  { icon: Palette, name: "Website Design", desc: "Landing pages & e-commerce" },
-  { icon: TrendingUp, name: "Digital Marketing", desc: "SEO, social media, paid ads" },
-  { icon: Bot, name: "AI Agents", desc: "Chatbots & workflow automation" },
-];
+import { ArrowRight, Check, Briefcase, Users } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -69,70 +62,55 @@ export default function Hero() {
           </ul>
         </div>
 
-        {/* Company capability panel */}
-        <div aria-hidden="true" className="relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-10 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,43,0.30),rgba(255,190,150,0.12)_60%,transparent)] blur-2xl" />
-          <div className="orb absolute -right-6 -top-8 hidden h-24 w-24 animate-float-soft lg:block" style={{ animationDelay: "1.5s" }} />
-          <div className="orb-glass absolute -bottom-8 -left-8 hidden h-20 w-20 animate-float-soft lg:block" style={{ animationDelay: "3s" }} />
+        {/* Team photo collage */}
+        <div className="relative mx-auto w-full max-w-md pb-10 sm:max-w-lg lg:max-w-none lg:pb-0">
+          <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-[radial-gradient(closest-side,rgba(255,122,43,0.28),rgba(255,190,150,0.10)_60%,transparent)] blur-2xl" />
 
-          <div className="relative rounded-[1.75rem] border border-white bg-white/85 p-5 shadow-lift backdrop-blur-md sm:p-6 sm:pb-10">
-            <div className="flex items-center justify-between border-b border-line pb-5">
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/mark.png" alt="" width={720} height={673} className="h-10 w-auto" />
-                <div>
-                  <p className="text-sm font-semibold text-ink">Sarastra Labs</p>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-orange">Ideas into impact</p>
-                </div>
-              </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-pale px-2.5 py-1 text-[11px] font-semibold text-orange-dark">
-                <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                Accepting projects
-              </span>
-            </div>
-
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">What we deliver</p>
-            <ul className="mt-3 space-y-2">
-              {deliverables.map((d) => {
-                const Icon = d.icon;
-                return (
-                  <li key={d.name} className="flex items-center gap-3 rounded-2xl border border-line/70 bg-cream/60 px-3.5 py-3">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange shadow-soft">
-                      <Icon className="h-4 w-4" strokeWidth={1.75} />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold text-ink">{d.name}</span>
-                      <span className="block truncate text-xs text-muted">{d.desc}</span>
-                    </span>
-                    <span className="text-[11px] font-semibold text-orange-dark">Live</span>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="rounded-2xl bg-ink p-4 text-white">
-                <p className="font-display text-2xl font-semibold">50+</p>
-                <p className="mt-0.5 text-xs text-white/60">Projects delivered</p>
-              </div>
-              <div className="rounded-2xl bg-orange p-4 text-white">
-                <p className="font-display text-2xl font-semibold">99%</p>
-                <p className="mt-0.5 text-xs text-white/80">Success rate</p>
-              </div>
-            </div>
+          <div className="relative ml-auto w-[88%] overflow-hidden rounded-[2rem] shadow-lift">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1100&h=1300&fit=crop&q=80"
+              alt="A team planning a client project"
+              width={1100}
+              height={1300}
+              className="aspect-[11/13] w-full object-cover"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
           </div>
 
-          {/* Floating chips */}
-          <div className="absolute -bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-4 whitespace-nowrap rounded-full border border-white bg-white px-5 py-3 shadow-lift sm:flex">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold text-ink">
-              <Clock className="h-4 w-4 text-orange" strokeWidth={2} />
-              Reply within 24 hours
+          {/* Inset photo */}
+          <div className="absolute bottom-0 left-0 w-[46%] overflow-hidden rounded-3xl border-[6px] border-cream shadow-lift lg:-bottom-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=460&fit=crop&q=80"
+              alt="Developers building software"
+              width={600}
+              height={460}
+              className="aspect-[30/23] w-full object-cover"
+            />
+          </div>
+
+          {/* Projects stat */}
+          <div className="absolute left-0 top-8 flex items-center gap-3 rounded-2xl border border-white bg-white/95 p-3.5 pr-5 shadow-lift backdrop-blur sm:top-12">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange text-white">
+              <Briefcase className="h-5 w-5" strokeWidth={1.75} />
             </span>
-            <span className="h-4 w-px bg-line" />
-            <span className="inline-flex items-center gap-2 text-xs font-semibold text-ink">
-              <MapPin className="h-4 w-4 text-orange" strokeWidth={2} />
-              Mangalore, India
+            <span>
+              <span className="block font-display text-xl font-semibold leading-none text-ink">50+</span>
+              <span className="mt-1 block text-xs text-muted">Projects delivered</span>
             </span>
+          </div>
+
+          {/* Success stat */}
+          <div className="absolute bottom-24 right-4 rounded-2xl bg-ink p-4 text-white shadow-lift sm:bottom-28 sm:right-6 sm:p-5">
+            <p className="font-display text-3xl font-semibold leading-none">
+              99<span className="text-orange-light">%</span>
+            </p>
+            <p className="mt-1.5 text-xs text-white/65">Client success rate</p>
+            <div className="mt-3 flex items-center gap-1.5 text-[11px] text-white/80">
+              <Users className="h-3.5 w-3.5 text-orange-light" strokeWidth={2} />
+              30+ clients
+            </div>
           </div>
         </div>
       </div>
