@@ -13,7 +13,7 @@ const mobileMask =
 /** Large blended image bleeding off the right edge (desktop). */
 export default function HeroArt() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46vw] max-w-[980px] opacity-90 lg:block xl:w-[60vw]">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46vw] max-w-[980px] opacity-55 lg:block xl:w-[60vw]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/brand/hero-3d.webp"
@@ -33,7 +33,7 @@ export default function HeroArt() {
 /** Same image, blended into the flow under the hero text (phones/tablets). */
 export function HeroArtMobile() {
   return (
-    <div aria-hidden="true" className="pointer-events-none -mx-5 mt-4 h-[300px] sm:-mx-8 sm:h-[400px] lg:hidden">
+    <div aria-hidden="true" className="pointer-events-none -mx-5 mt-4 h-[300px] opacity-60 sm:-mx-8 sm:h-[400px] lg:hidden">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/brand/hero-3d.webp"
