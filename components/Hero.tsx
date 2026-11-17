@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import HeroArt, { HeroArtMobile } from "./HeroArt";
+import HeroArt from "./HeroArt";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-12 pt-28 sm:pb-16 sm:pt-32 md:pt-36 lg:pb-16 lg:pt-32">
+    <section className="relative flex items-center overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-40 lg:min-h-[100svh] lg:pb-16 lg:pt-32">
       <HeroArt />
 
       <div className="container-page relative">
@@ -49,7 +49,6 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroArtMobile />
       </div>
     </section>
   );
