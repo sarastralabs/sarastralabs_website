@@ -4,11 +4,12 @@ import TechStrip from "@/components/TechStrip";
 import About from "@/components/About";
 import StatsBand from "@/components/StatsBand";
 import Services from "@/components/Services";
+import Products from "@/components/Products";
 import Process from "@/components/Process";
 import WhyUs from "@/components/WhyUs";
 import Blog from "@/components/Blog";
 import Industries from "@/components/Industries";
-import Contact from "@/components/Contact";
+import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import SoftBackground from "@/components/SoftBackground";
 
@@ -27,6 +28,9 @@ export default function Home() {
         <section id="services" aria-label="Our Services">
           <Services />
         </section>
+        <section id="products" aria-label="Upcoming Products">
+          <Products />
+        </section>
         <section id="process" aria-label="How We Work">
           <Process />
         </section>
@@ -39,9 +43,7 @@ export default function Home() {
         <section id="blog" aria-label="Latest Blog Posts">
           <Blog />
         </section>
-        <section id="contact" aria-label="Contact Us">
-          <Contact />
-        </section>
+        <CTABanner />
       </main>
       <Footer />
     </>

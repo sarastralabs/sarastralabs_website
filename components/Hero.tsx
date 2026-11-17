@@ -14,11 +14,16 @@ export default function Hero() {
       <div aria-hidden="true" className="orb absolute -right-10 top-24 h-28 w-28 opacity-80 sm:h-36 sm:w-36 lg:hidden" />
 
       <div className="container-page relative grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-orange-dark shadow-soft backdrop-blur animate-fade-up">
-            <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-            Software · AI · Digital Marketing · Education
-          </p>
+        <div className="min-w-0">
+          <Link
+            href="/#products"
+            className="group inline-flex max-w-full items-center gap-2.5 rounded-full border border-orange/20 bg-white/80 py-1 pl-1 pr-3.5 text-xs font-semibold text-ink-soft shadow-soft backdrop-blur transition-colors hover:border-orange/50 animate-fade-up sm:text-[13px]"
+          >
+            <span className="shrink-0 rounded-full bg-orange px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">New</span>
+            <span className="truncate sm:hidden">3 products launching soon</span>
+            <span className="hidden truncate sm:inline">3 products for small businesses, launching soon</span>
+            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-orange transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+          </Link>
 
           <h1
             className="mt-6 font-display text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.035em] text-ink animate-fade-up sm:text-[3.5rem] lg:text-[4rem]"
