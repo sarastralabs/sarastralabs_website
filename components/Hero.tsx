@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import HeroArt from "./HeroArt";
+import HeroArt, { HeroArtMobile } from "./HeroArt";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-36 md:pt-44 lg:pb-24 lg:pt-48">
-      <div aria-hidden="true" className="orb absolute -right-10 top-24 h-28 w-28 opacity-80 sm:h-36 sm:w-36 lg:hidden" />
+    <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-36 md:pt-44 lg:pb-32 lg:pt-52">
+      <HeroArt />
 
-      <div className="container-page relative grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-        <div className="min-w-0">
+      <div className="container-page relative">
+        <div className="min-w-0 lg:max-w-[600px]">
           <Link
             href="/#products"
             className="group inline-flex max-w-full items-center gap-2.5 rounded-full border border-orange/20 bg-white/80 py-1 pl-1 pr-3.5 text-xs font-semibold text-ink-soft shadow-soft backdrop-blur transition-colors hover:border-orange/50 animate-fade-up sm:text-[13px]"
@@ -63,7 +63,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <HeroArt />
+        <HeroArtMobile />
       </div>
     </section>
   );
