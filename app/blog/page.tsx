@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
+import { getInstagramPosts } from "@/lib/instagram";
 import PageHeader from "@/components/PageHeader";
 import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
@@ -24,7 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const instagramPosts = await getInstagramPosts(9);
+
   return (
     <>
       <SoftBackground />
@@ -36,7 +39,7 @@ export default function BlogPage() {
           title="Ideas, guides and trends from our team."
           lead="Stay updated with the latest trends, tips, and insights from our team."
         />
-        <Blog />
+        <Blog instagramPosts={instagramPosts} />
         <CTABanner />
       </main>
       <Footer />

@@ -11,9 +11,12 @@ import Blog from "@/components/Blog";
 import Industries from "@/components/Industries";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import { getInstagramPosts } from "@/lib/instagram";
 import SoftBackground from "@/components/SoftBackground";
 
-export default function Home() {
+export default async function Home() {
+  const instagramPosts = await getInstagramPosts(3);
+
   return (
     <>
       <SoftBackground />
@@ -41,7 +44,7 @@ export default function Home() {
           <WhyUs />
         </section>
         <section id="blog" aria-label="Latest Blog Posts">
-          <Blog />
+          <Blog instagramPosts={instagramPosts} />
         </section>
         <CTABanner />
       </main>

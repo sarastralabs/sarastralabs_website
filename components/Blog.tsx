@@ -1,7 +1,11 @@
 "use client";
 
-import { Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react";
+import { Calendar, Clock, ArrowRight, TrendingUp, Images, Play, ArrowUpRight } from "lucide-react";
+import type { InstagramPost } from "@/lib/instagram";
 import { useReveal } from "./useReveal";
+import { InstagramIcon } from "./SocialIcons";
+
+const INSTAGRAM_URL = "https://www.instagram.com/sarastra.labs/";
 
 const blogPosts = [
   {
@@ -33,7 +37,89 @@ const blogPosts = [
   },
 ];
 
-export default function Blog() {
+export default function Blog({ instagramPosts = [] }: { instagramPosts?: InstagramPost[] }) {
+  if (instagramPosts.length > 0) return <InstagramFeed posts={instagramPosts} />;
+  return <StaticInsights />;
+}
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" });
+}
+
+/** Latest posts pulled from the Sarastra Labs Instagram account. */
+function InstagramFeed({ posts }: { posts: InstagramPost[] }) {
+  const { ref, visible } = useReveal<HTMLElement>();
+
+  return (
+    <section ref={ref} className="section-pad relative">
+      <div className="container-page">
+        <div className={`flex flex-col gap-6 md:flex-row md:items-end md:justify-between reveal ${visible ? "is-visible" : ""}`}>
+          <div>
+            <p className="eyebrow">Insights</p>
+            <h2 className="section-title mt-4">Latest insights.</h2>
+            <p className="section-lead">Fresh from our Instagram: tips, launches and behind-the-scenes from the team.</p>
+          </div>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-outline self-start md:self-auto">
+            <InstagramIcon className="h-4 w-4" />
+            Follow @sarastra.labs
+          </a>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post, index) => (
+            <a
+              key={post.id}
+              href={post.permalink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lift reveal ${
+                visible ? "is-visible" : ""
+              }`}
+              style={{ transitionDelay: `${index * 90}ms` }}
+            >
+              <div className="relative aspect-square overflow-hidden bg-cream-deep">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={post.imageUrl}
+                  alt={post.caption ? post.caption.slice(0, 120) : "Instagram post by Sarastra Labs"}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {post.mediaType !== "IMAGE" && (
+                  <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink backdrop-blur">
+                    {post.mediaType === "VIDEO" ? (
+                      <Play className="h-3.5 w-3.5" strokeWidth={2.25} />
+                    ) : (
+                      <Images className="h-3.5 w-3.5" strokeWidth={2} />
+                    )}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                {post.caption && (
+                  <p className="line-clamp-3 flex-1 whitespace-pre-line text-[15px] leading-relaxed text-ink-soft">{post.caption}</p>
+                )}
+                <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-xs text-muted">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    {formatDate(post.timestamp)}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors group-hover:text-orange">
+                    View on Instagram
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Fallback articles shown until the Instagram feed is connected. */
+function StaticInsights() {
   const { ref, visible } = useReveal<HTMLElement>();
 
   return (
