@@ -1,6 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
+import Process from "@/components/Process";
+import WhyUs from "@/components/WhyUs";
+import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
@@ -29,8 +33,17 @@ export default function ServicesPage() {
     <>
       <SoftBackground />
       <Navbar />
-      <main className="relative pt-16 sm:pt-20">
+      <main className="relative">
+        <PageHeader
+          crumb="Services"
+          eyebrow="Our services"
+          title="End-to-end software, AI and digital solutions."
+          lead="From concept to deployment, we deliver cutting-edge solutions that drive real results."
+        />
         <Services />
+        <Process />
+        <WhyUs />
+        <CTABanner />
       </main>
       <Footer />
     </>

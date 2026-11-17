@@ -160,7 +160,7 @@ export default function Contact() {
               Email Us Directly
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </a>
-            <Link href="/#services" className="btn-ghost">
+            <Link href="/services" className="btn-ghost">
               View Services
             </Link>
           </div>

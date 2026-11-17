@@ -132,7 +132,7 @@ export default function Services() {
               From concept to deployment, we deliver cutting-edge solutions that drive real results.
             </p>
           </div>
-          <Link href="/#contact" className="btn-ghost group self-start md:self-auto">
+          <Link href="/contact" className="btn-ghost group self-start md:self-auto">
             Let&apos;s Build Together
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
           </Link>
@@ -240,7 +240,7 @@ export default function Services() {
                 <span className={`h-1.5 w-1.5 rounded-full ${selected.active ? "bg-orange" : "bg-muted/60"}`} />
                 {selected.status}
               </span>
-              <Link href="/#contact" onClick={() => setSelectedIndex(null)} className="btn-primary">
+              <Link href="/contact" onClick={() => setSelectedIndex(null)} className="btn-primary">
                 Start a Project
                 <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </Link>

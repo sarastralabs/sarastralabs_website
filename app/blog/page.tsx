@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
+import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
@@ -27,8 +29,15 @@ export default function BlogPage() {
     <>
       <SoftBackground />
       <Navbar />
-      <main className="relative pt-16 sm:pt-20">
+      <main className="relative">
+        <PageHeader
+          crumb="Insights"
+          eyebrow="Insights"
+          title="Ideas, guides and trends from our team."
+          lead="Stay updated with the latest trends, tips, and insights from our team."
+        />
         <Blog />
+        <CTABanner />
       </main>
       <Footer />
     </>

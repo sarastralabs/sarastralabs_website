@@ -45,7 +45,7 @@ export default function Blog() {
             <h2 className="section-title mt-4">Latest insights.</h2>
             <p className="section-lead">Stay updated with the latest trends, tips, and insights from our team.</p>
           </div>
-          <a href="#" className="btn-outline self-start md:self-auto">
+          <a href="/blog" className="btn-outline self-start md:self-auto">
             View All Posts
             <ArrowRight className="h-4 w-4" strokeWidth={2} />
           </a>

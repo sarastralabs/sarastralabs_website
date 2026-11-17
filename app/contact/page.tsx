@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
 
@@ -20,7 +21,13 @@ export default function ContactPage() {
     <>
       <SoftBackground />
       <Navbar />
-      <main className="relative pt-16 sm:pt-20">
+      <main className="relative">
+        <PageHeader
+          crumb="Contact"
+          eyebrow="Contact us"
+          title="Let’s talk about your project."
+          lead="Email, call or send us a message. We typically respond within 24 hours on business days."
+        />
         <Contact />
       </main>
       <Footer />

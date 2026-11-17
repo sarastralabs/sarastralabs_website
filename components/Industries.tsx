@@ -60,7 +60,7 @@ export default function Industries() {
             <p className="section-lead">Delivering specialized solutions across diverse sectors with deep domain expertise.</p>
             <div className="mt-8">
               <p className="text-[15px] text-muted">Don&apos;t see your industry? We adapt to any sector.</p>
-              <Link href="/#contact" className="btn-primary mt-5">
+              <Link href="/contact" className="btn-primary mt-5">
                 Discuss Your Project
                 <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </Link>
