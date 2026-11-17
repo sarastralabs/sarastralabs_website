@@ -79,7 +79,7 @@ export default function Navbar() {
             ? "border-line/70 bg-cream shadow-soft"
             : scrolled
               ? "border-line/70 bg-cream/90 shadow-soft backdrop-blur-md"
-              : "border-line/50 bg-cream/70 backdrop-blur-md"
+              : "border-transparent bg-transparent"
         }`}
       >
         <nav className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 xl:px-12 flex h-16 items-center justify-between md:h-[76px] gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-8" aria-label="Main">
