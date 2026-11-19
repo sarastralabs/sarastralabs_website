@@ -4,6 +4,7 @@ import "./globals.css";
 import { site } from "@/lib/site";
 import { siteGraph } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -105,6 +106,7 @@ export default function RootLayout({
         className={`${inter.variable} ${interTight.variable} font-sans antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
