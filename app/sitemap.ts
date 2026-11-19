@@ -1,44 +1,21 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { site } from "@/lib/site";
+
+const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
+  { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "/services", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/about", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://sarastralabs.com'
-  
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/industries`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-  ]
+  const lastModified = new Date();
+  return pages.map((p) => ({
+    url: `${site.url}${p.path}`,
+    lastModified,
+    changeFrequency: p.changeFrequency,
+    priority: p.priority,
+  }));
 }

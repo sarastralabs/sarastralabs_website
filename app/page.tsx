@@ -11,6 +11,9 @@ import Blog from "@/components/Blog";
 import Industries from "@/components/Industries";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import FAQ from "@/components/FAQ";
+import JsonLd from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
 import { getInstagramPosts } from "@/lib/instagram";
 import SoftBackground from "@/components/SoftBackground";
 
@@ -19,6 +22,7 @@ export default async function Home() {
 
   return (
     <>
+      <JsonLd data={faqSchema} />
       <SoftBackground />
       <Navbar />
       <main className="relative">
@@ -43,6 +47,7 @@ export default async function Home() {
         <section id="why-us" aria-label="Why Sarastra Labs">
           <WhyUs />
         </section>
+        <FAQ />
         <section id="blog" aria-label="Latest Blog Posts">
           <Blog instagramPosts={instagramPosts} />
         </section>

@@ -6,22 +6,19 @@ import PageHeader from "@/components/PageHeader";
 import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Blog | Tech Insights, AI Trends & Development Tips - Sarastra Labs",
-  description: "Read our latest articles on software development, AI technology, digital marketing strategies, and tech trends for startups and businesses in India.",
-  keywords: [
-    "tech blog India",
-    "software development blog",
-    "AI technology articles",
-    "startup tech tips",
-    "digital marketing blog",
-    "web development tutorials"
-  ],
+  title: "Insights: Tech, AI & Digital Marketing Tips for Businesses",
+  description: "Articles and updates from Sarastra Labs on AI agents, software, websites and digital marketing for small and growing businesses.",
+  keywords: ["tech blog India", "AI for small business", "digital marketing tips", "website tips for businesses"],
+  alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Sarastra Labs Blog | Latest Tech Insights & Industry Trends",
-    description: "Stay updated with expert articles on software development, AI, and digital transformation.",
-    url: "https://sarastralabs.com/blog",
+    title: "Insights: Tech, AI & Digital Marketing Tips for Businesses | Sarastra Labs",
+    description: "Articles and updates from Sarastra Labs on AI agents, software, websites and digital marketing for small and growing businesses.",
+    url: "/blog",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -30,6 +27,7 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema("Insights", "/blog")} />
       <SoftBackground />
       <Navbar />
       <main className="relative">
