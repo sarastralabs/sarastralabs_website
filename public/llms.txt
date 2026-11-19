@@ -1,0 +1,38 @@
+# Sarastra Labs
+
+> Sarastra Labs is a software and digital agency based in Mangaluru (Mangalore), Karnataka, India. It builds websites, custom business software and AI agents, and runs social media and digital marketing, mainly for local, small and growing businesses. Tagline: "Ideas into Impact".
+
+Sarastra Labs works end-to-end, from idea and design to development, launch, marketing and support. It offers a free consultation and typically responds within 24 hours on business days. The name combines Saraswathi (knowledge) and Astra (precision). Sarastra Labs is also building three affordable products for small-business problems (launching soon).
+
+## Services
+
+- [Software Development](https://sarastralabs.com/services): custom web apps (React, Next.js, Vue), mobile apps (React Native, Flutter), backend APIs (Node.js, Python, FastAPI), SaaS products, legacy system modernisation.
+- [Custom Business Software](https://sarastralabs.com/services): billing, invoicing and POS; inventory and stock management; CRM; appointment and booking systems; ERP and business dashboards; HR, payroll and attendance.
+- [Website Design](https://sarastralabs.com/services): landing pages, business and portfolio websites, e-commerce stores, UI/UX and responsive design.
+- [Digital Marketing](https://sarastralabs.com/services): SEO, social media marketing, Google Ads and PPC, content and email marketing, analytics.
+- [AI Agents](https://sarastralabs.com/services): custom AI chatbots, RAG knowledge bases, workflow automation, AI analytics, OpenAI and LLM solutions.
+- [NexGen Projects](https://sarastralabs.com/services): industry-grade final-year and capstone projects for students, with mentorship, documentation and deployment.
+- Labs Launchpad (coming soon): internships, open-source programs and workshops.
+
+## Industries
+
+E-commerce, healthcare, education, real estate, fintech and logistics. See [Industries](https://sarastralabs.com/industries).
+
+## Key pages
+
+- [Home](https://sarastralabs.com/)
+- [About](https://sarastralabs.com/about): story, mission, vision and values
+- [Services](https://sarastralabs.com/services)
+- [Industries](https://sarastralabs.com/industries)
+- [Insights](https://sarastralabs.com/blog)
+- [Contact and FAQ](https://sarastralabs.com/contact)
+
+## Contact
+
+- Email: info@sarastralabs.com
+- Phone: +91 93536 22801, +91 97414 47767
+- Location: Mangaluru (Mangalore), Karnataka, India
+- Instagram: https://www.instagram.com/sarastra.labs/
+- LinkedIn: https://www.linkedin.com/in/sarastra-labs-bb3595405/
+- X: https://x.com/LabsSarastra
+- YouTube: https://www.youtube.com/@sarastralabs

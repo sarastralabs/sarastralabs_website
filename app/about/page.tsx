@@ -8,21 +8,26 @@ import WhyUs from "@/components/WhyUs";
 import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "About Us | Sarastra Labs - AI & Software Development Company India",
-  description: "Learn about Sarastra Labs, India's innovation engine for next-gen technology. Our mission, vision, and values driving affordable software development and AI solutions.",
-  keywords: ["about sarastra labs", "software development company India", "AI company India", "tech startup India", "Mangalore software company"],
+  title: { absolute: "About Sarastra Labs | Software & Digital Agency in Mangaluru" },
+  description: "Sarastra Labs is a Mangaluru (Mangalore) based technology studio delivering affordable websites, custom software, AI agents and digital marketing. Our story, mission, vision and values.",
+  keywords: ["about sarastra labs", "software company in Mangaluru", "tech startup Mangalore", "IT company Karnataka"],
+  alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Sarastra Labs | Leading Software & AI Development Company",
-    description: "Discover how Sarastra Labs delivers affordable, end-to-end tech solutions for businesses and students across India.",
-    url: "https://sarastralabs.com/about",
+    title: "About Sarastra Labs | Software & Digital Agency in Mangaluru",
+    description: "Sarastra Labs is a Mangaluru (Mangalore) based technology studio delivering affordable websites, custom software, AI agents and digital marketing. Our story, mission, vision and values.",
+    url: "/about",
+    images: ["/opengraph-image"],
   },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema("About Us", "/about")} />
       <SoftBackground />
       <Navbar />
       <main className="relative">

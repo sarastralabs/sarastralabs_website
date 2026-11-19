@@ -30,7 +30,7 @@ export default function Hero() {
             className="mt-6 max-w-xl text-base leading-relaxed text-muted animate-fade-up sm:text-lg"
             style={{ animationDelay: "160ms" }}
           >
-            Sarastra Labs designs websites, builds custom software and AI automation, and runs social media and
+            Based in Mangaluru, Sarastra Labs designs websites, builds custom software and AI automation, and runs social media and
             digital marketing for growing businesses. End-to-end, from idea to launch. Affordable. Fast.
             Future-ready.
           </p>

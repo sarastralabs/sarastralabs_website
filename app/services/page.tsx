@@ -7,30 +7,27 @@ import WhyUs from "@/components/WhyUs";
 import CTABanner from "@/components/CTABanner";
 import SoftBackground from "@/components/SoftBackground";
 import { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, servicesSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Services | Software Development, AI Agents & Digital Marketing - Sarastra Labs",
-  description: "Explore our services: Custom software development, AI agents, digital marketing, web design, and student project support. Affordable tech solutions for startups and enterprises.",
-  keywords: [
-    "software development services India",
-    "AI development company",
-    "digital marketing services",
-    "web development India",
-    "mobile app development",
-    "AI chatbot development",
-    "startup tech solutions",
-    "affordable software development"
-  ],
+  title: "Services: Websites, Custom Software, AI Agents & Digital Marketing",
+  description: "Website design, custom business software (billing, inventory, CRM, booking), AI chatbots and agents, SEO and social media marketing, and student projects, from Sarastra Labs in Mangaluru.",
+  keywords: ["website design Mangalore", "custom business software", "billing software development", "AI chatbot development", "digital marketing services Mangaluru", "SEO services Mangalore"],
+  alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | Sarastra Labs - Complete Tech Solutions",
-    description: "From software development to AI automation and digital marketing - we deliver end-to-end solutions.",
-    url: "https://sarastralabs.com/services",
+    title: "Services: Websites, Custom Software, AI Agents & Digital Marketing | Sarastra Labs",
+    description: "Website design, custom business software (billing, inventory, CRM, booking), AI chatbots and agents, SEO and social media marketing, and student projects, from Sarastra Labs in Mangaluru.",
+    url: "/services",
+    images: ["/opengraph-image"],
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema("Services", "/services")} />
+      <JsonLd data={servicesSchema} />
       <SoftBackground />
       <Navbar />
       <main className="relative">
